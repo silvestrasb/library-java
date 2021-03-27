@@ -6,4 +6,6 @@ public interface Quantifiable {
     void removeOne();
 
     void addOne();
+
+    void add(int quantity);
 }
