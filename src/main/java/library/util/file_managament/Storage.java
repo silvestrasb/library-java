@@ -1,4 +1,4 @@
-package lt.library.service.storage;
+package library.service.storage;
 
 public interface Storage<E> {
 

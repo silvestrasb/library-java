@@ -1,4 +1,4 @@
-package lt.library.model;
+package library.model;
 
 public interface Namable {
     String getName();

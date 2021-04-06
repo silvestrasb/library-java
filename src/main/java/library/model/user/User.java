@@ -1,13 +1,15 @@
 package lt.library.model.user;
 
+import lt.library.exception.InvalidEmailException;
 import lt.library.model.Namable;
 import lt.library.model.book.Book;
+import lt.library.util.Validator;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class User implements Namable, Registrable, Borrowing {
+public abstract class User implements Namable, Registrable, Borrowing {
 
     private final String name;
     private final String surname;
@@ -15,7 +17,8 @@ public class User implements Namable, Registrable, Borrowing {
     private final String passwordEncrypted;
     private List<Book> borrowedBooks = new ArrayList<>();
 
-    public User(String name, String surname, String email, String password) { //, UserType type
+    public User(String name, String surname, String email, String password) {
+        Validator.validEmail(email);
         this.name = name;
         this.surname = surname;
         this.email = email;
