@@ -1,8 +1,8 @@
-package lt.library.model.user;
+package library.model.user;
 
 public interface Registrable {
 
     String getEmail();
 
-    String getHashedPassword();
+    String getPassword();
 }

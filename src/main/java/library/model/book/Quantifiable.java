@@ -1,4 +1,4 @@
-package lt.library.model.book;
+package library.model.book;
 
 public interface Quantifiable {
     int getQuantity();
@@ -8,4 +8,8 @@ public interface Quantifiable {
     void addOne();
 
     void add(int quantity);
+
+    void remove(int quantity);
+
+    void setQuantity(int quantity);
 }

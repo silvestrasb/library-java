@@ -1,4 +1,4 @@
-package lt.library.model.book;
+package library.model.book;
 
 public interface Ageable {
     int getAge();

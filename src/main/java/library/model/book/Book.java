@@ -1,28 +1,35 @@
-package lt.library.model.book;
-
-import java.time.LocalDate;
+package library.model.book;
 
 public class Book implements Quantifiable, Releasable {
 
-    private final String title;
-    private final String authorsName;
-    private final String authorsSurname;
-    private final String genre;
-    private final LocalDate releaseDate;
+    private String title;
+    private String authorsName;
+    private String authorsSurname;
+    private String genre;
     private int quantity;
 
-    public Book(String title, String authorsName, String authorsSurname, String genre, LocalDate releaseDate, int quantity) {
+    public Book() {
+    }
+
+    public Book(String title, String authorsName, String authorsSurname, String genre, int quantity) {
         this.title = title;
         this.authorsName = authorsName;
         this.authorsSurname = authorsSurname;
         this.genre = genre;
-        this.releaseDate = releaseDate;
         this.quantity = quantity;
     }
 
     @Override
     public String getTitle() {
         return this.title;
+    }
+
+    public String getAuthorsName() {
+        return this.authorsName;
+    }
+
+    public String getAuthorsSurname() {
+        return this.authorsSurname;
     }
 
     @Override
@@ -37,14 +44,9 @@ public class Book implements Quantifiable, Releasable {
                 "title='" + title + '\'' +
                 ", authorsName='" + authorsName + '\'' +
                 ", authorsSurname='" + authorsSurname + '\'' +
-                ", gendre='" + genre + '\'' +
+                ", genre='" + genre + '\'' +
                 ", quantity=" + quantity +
                 '}';
-    }
-
-    @Override
-    public LocalDate getReleaseDate() {
-        return this.releaseDate;
     }
 
     @Override
@@ -54,17 +56,27 @@ public class Book implements Quantifiable, Releasable {
 
     @Override
     public void removeOne() {
-        this.quantity --;
+        this.quantity--;
     }
 
     @Override
     public void addOne() {
-        this.quantity ++;
+        this.quantity++;
     }
 
     @Override
     public void add(int quantity) {
         this.quantity += quantity;
+    }
+
+    @Override
+    public void remove(int quantity) {
+        this.quantity -= quantity;
+    }
+
+    @Override
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
 }

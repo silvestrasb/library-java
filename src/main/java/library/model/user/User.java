@@ -1,28 +1,45 @@
-package lt.library.model.user;
+package library.model.user;
 
-import lt.library.exception.InvalidEmailException;
-import lt.library.model.Namable;
-import lt.library.model.book.Book;
-import lt.library.util.Validator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import library.exception.BookNotFoundException;
+import library.model.Nameable;
+import library.model.book.Book;
+import library.util.collapser.BookListCollapser;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class User implements Namable, Registrable, Borrowing {
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type",
+        visible = true)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = WriterUser.class, name = "WriterUser"),
+        @JsonSubTypes.Type(value = ReaderUser.class, name = "ReaderUser")}
+)
 
-    private final String name;
-    private final String surname;
-    private final String email;
-    private final String passwordEncrypted;
+public abstract class User implements Nameable, Registrable, Borrowing {
+
+    @JsonProperty("type")
+    private String type = this.getClass().getSimpleName(); // Needed for json polymorphic deserialization
+    private String name;
+    private String surname;
+    private String email;
+    private String password;
     private List<Book> borrowedBooks = new ArrayList<>();
 
+    public User() {
+    }
+
     public User(String name, String surname, String email, String password) {
-        Validator.validEmail(email);
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.passwordEncrypted = DigestUtils.sha256Hex(password);
+        this.password = DigestUtils.sha256Hex(password);
     }
 
     @Override
@@ -41,8 +58,8 @@ public abstract class User implements Namable, Registrable, Borrowing {
     }
 
     @Override
-    public String getHashedPassword() {
-        return this.passwordEncrypted;
+    public String getPassword() {
+        return this.password;
     }
 
     @Override
@@ -52,7 +69,30 @@ public abstract class User implements Namable, Registrable, Borrowing {
 
     @Override
     public void borrowBook(Book book) {
+        BookListCollapser bookListCollapser = new BookListCollapser();
+
         borrowedBooks.add(book);
+
+        borrowedBooks = bookListCollapser.collapseBooks(borrowedBooks);
+    }
+
+    public void returnBorrowedBook(Book book) throws BookNotFoundException {
+
+        Book bookFromTheList = borrowedBooks.stream()
+                .filter(b -> b.getAuthorsName().equals(book.getAuthorsName()) &&
+                        b.getAuthorsSurname().equals(book.getAuthorsSurname()) &&
+                        b.getTitle().equals(book.getTitle()))
+                .findFirst()
+                .orElse(null);
+
+        if (bookFromTheList == null) {
+            throw new BookNotFoundException();
+        }
+
+        borrowedBooks.remove(bookFromTheList);
+        bookFromTheList.remove(book.getQuantity());
+        if (bookFromTheList.getQuantity() != 0) borrowedBooks.add(bookFromTheList);
+
     }
 
 }

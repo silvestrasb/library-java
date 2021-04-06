@@ -1,6 +1,6 @@
-package lt.library.model.user;
+package library.model.user;
 
-import lt.library.model.book.Book;
+import library.model.book.Book;
 import java.util.List;
 
 public interface Borrowing {

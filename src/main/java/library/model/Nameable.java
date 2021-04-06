@@ -1,6 +1,6 @@
 package library.model;
 
-public interface Namable {
+public interface Nameable {
     String getName();
 
     String getSurname();
