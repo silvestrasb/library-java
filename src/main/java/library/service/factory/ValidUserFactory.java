@@ -4,7 +4,6 @@ import library.exception.InvalidEmailException;
 import library.model.enums.UserType;
 import library.model.user.ReaderUser;
 import library.model.user.User;
-import library.model.user.WriterUser;
 import library.util.validators.EmailValidator;
 
 public class ValidUserFactory {

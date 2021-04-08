@@ -1,14 +1,47 @@
 [ {
-  "name" : "admin",
-  "surname" : "admin",
-  "email" : "admin@admin.com",
+  "name" : "Inesa",
+  "surname" : "Bumblauskaite",
+  "email" : "inesa.bumblauskaite@gmail.com",
+  "password" : "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+  "borrowedBooks" : [ ],
+  "type" : "ReaderUser"
+}, {
+  "name" : "Odeta",
+  "surname" : "Razmine",
+  "email" : "odeta.razmine@gmail.com",
+  "password" : "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+  "borrowedBooks" : [ ],
+  "type" : "ReaderUser"
+}, {
+  "name" : "Inesa",
+  "surname" : "Bumblauskaite",
+  "email" : "axnoli@gmail.com",
   "password" : "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
   "borrowedBooks" : [ {
-    "title" : "The Soldier's Art",
-    "authorsName" : "Fletcher",
-    "authorsSurname" : "Rowe",
-    "genre" : "Narrative nonfiction",
-    "quantity" : 10
+    "title" : "An Evil Cradling",
+    "authorsName" : "Hugh",
+    "authorsSurname" : "Ernser",
+    "genre" : "Historical fiction",
+    "quantity" : 1001
+  } ],
+  "type" : "ReaderUser"
+}, {
+  "name" : "Silvestras",
+  "surname" : "Bumblauskas",
+  "email" : "123",
+  "password" : "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+  "borrowedBooks" : [ {
+    "title" : "To Your Scattered Bodies Go",
+    "authorsName" : "Marisol",
+    "authorsSurname" : "Kuhn",
+    "genre" : "Metafiction",
+    "quantity" : 6
+  }, {
+    "title" : "An Evil Cradling",
+    "authorsName" : "Hugh",
+    "authorsSurname" : "Ernser",
+    "genre" : "Historical fiction",
+    "quantity" : 22
   } ],
   "type" : "ReaderUser"
 } ]

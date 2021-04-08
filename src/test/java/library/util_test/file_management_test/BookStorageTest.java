@@ -22,6 +22,7 @@ public class BookStorageTest {
     private FakeGenerator fakeGenerator = new FakeGenerator();
     private static final String BOOK_DATA_FILENAME = "book_data.json";
 
+
     @Test
     public void put_CoupleOfBooks_BooksAppearInJsonFile() throws IOException {
 
@@ -212,7 +213,7 @@ public class BookStorageTest {
 
         Book returnBook = new Book("Horrors of Testing.", "Lorem", "Ipsum", "Horror", 1);
 
-        bookStorage.returnBook(returnBook);
+        bookStorage.addToExistingBook(returnBook);
 
         Book book = bookStorage.findBookByTitle("Horrors of Testing.");
 
@@ -239,7 +240,7 @@ public class BookStorageTest {
         bookStorage.put(book4);
         bookStorage.put(book5);
 
-        bookStorage.returnBook(returnBook);
+        bookStorage.addToExistingBook(returnBook);
 
         Book book = bookStorage.findBookByTitle("Horrors of Testing.");
 

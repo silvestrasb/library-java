@@ -1,121 +1,13 @@
 [ {
-  "title" : "The Stars' Tennis Balls",
-  "authorsName" : "Dario",
-  "authorsSurname" : "Mohr",
-  "genre" : "Textbook",
-  "quantity" : 86
-}, {
-  "title" : "Rosemary Sutcliff",
-  "authorsName" : "Tyrone",
-  "authorsSurname" : "Berge",
-  "genre" : "Narrative nonfiction",
-  "quantity" : 46
-}, {
-  "title" : "I Sing the Body Electric",
-  "authorsName" : "Royce",
-  "authorsSurname" : "Murray",
-  "genre" : "Short story",
-  "quantity" : 85
-}, {
-  "title" : "Time To Murder And Create",
-  "authorsName" : "Christian",
-  "authorsSurname" : "Von",
-  "genre" : "Essay",
-  "quantity" : 46
-}, {
-  "title" : "The Widening Gyre",
-  "authorsName" : "Cristopher",
-  "authorsSurname" : "Pouros",
-  "genre" : "Humor",
-  "quantity" : 46
-}, {
-  "title" : "An Instant In The Wind",
-  "authorsName" : "Karin",
-  "authorsSurname" : "Dickens",
-  "genre" : "Classic",
-  "quantity" : 24
-}, {
-  "title" : "Brandy of the Damned",
-  "authorsName" : "Buford",
-  "authorsSurname" : "Haag",
-  "genre" : "Mythology",
-  "quantity" : 51
-}, {
-  "title" : "The Millstone",
-  "authorsName" : "Miguel",
-  "authorsSurname" : "Gulgowski",
-  "genre" : "Humor",
-  "quantity" : 33
-}, {
-  "title" : "Of Mice and Men",
-  "authorsName" : "Lan",
-  "authorsSurname" : "Ferry",
-  "genre" : "Legend",
-  "quantity" : 13
-}, {
   "title" : "To Your Scattered Bodies Go",
-  "authorsName" : "Merrie",
-  "authorsSurname" : "Rippin",
-  "genre" : "Mystery",
-  "quantity" : 20
+  "authorsName" : "Marisol",
+  "authorsSurname" : "Kuhn",
+  "genre" : "Metafiction",
+  "quantity" : 72
 }, {
-  "title" : "Pale Kings and Princes",
-  "authorsName" : "Marjory",
-  "authorsSurname" : "Farrell",
-  "genre" : "Mythopoeia",
-  "quantity" : 3
-}, {
-  "title" : "The Moving Toyshop",
-  "authorsName" : "Sherell",
-  "authorsSurname" : "Keebler",
-  "genre" : "Speech",
-  "quantity" : 12
-}, {
-  "title" : "A Monstrous Regiment of Women",
-  "authorsName" : "Charmain",
-  "authorsSurname" : "Walter",
-  "genre" : "Mythology",
-  "quantity" : 17
-}, {
-  "title" : "I Will Fear No Evil",
-  "authorsName" : "Earle",
-  "authorsSurname" : "West",
-  "genre" : "Essay",
-  "quantity" : 16
-}, {
-  "title" : "The Green Bay Tree",
-  "authorsName" : "Lilia",
-  "authorsSurname" : "Strosin",
-  "genre" : "Comic/Graphic Novel",
-  "quantity" : 21
-}, {
-  "title" : "After Many a Summer Dies the Swan",
-  "authorsName" : "Velma",
-  "authorsSurname" : "Lesch",
-  "genre" : "Textbook",
-  "quantity" : 28
-}, {
-  "title" : "The Millstone",
-  "authorsName" : "Aide",
-  "authorsSurname" : "Lynch",
-  "genre" : "Fiction in verse",
-  "quantity" : 45
-}, {
-  "title" : "The Little Foxes",
-  "authorsName" : "Damion",
-  "authorsSurname" : "Heller",
-  "genre" : "Western",
-  "quantity" : 65
-}, {
-  "title" : "The Golden Apples of the Sun",
-  "authorsName" : "Bree",
-  "authorsSurname" : "Labadie",
-  "genre" : "Fiction in verse",
-  "quantity" : 12
-}, {
-  "title" : "The Soldier's Art",
-  "authorsName" : "Fletcher",
-  "authorsSurname" : "Rowe",
-  "genre" : "Narrative nonfiction",
-  "quantity" : 0
+  "title" : "An Evil Cradling",
+  "authorsName" : "Hugh",
+  "authorsSurname" : "Ernser",
+  "genre" : "Historical fiction",
+  "quantity" : 3910
 } ]

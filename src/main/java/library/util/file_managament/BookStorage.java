@@ -1,5 +1,6 @@
 package library.util.file_managament;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import library.exception.AuthorDoesNotExistsException;
@@ -23,9 +24,24 @@ public class BookStorage implements Storage<Book> {
 
     private BookListCollapser bookListCollapser = new BookListCollapser();
 
+    private ObjectMapper mapper = new ObjectMapper();
+
+    public BookStorage() {
+        read();
+    }
+
+    public void read(){
+        try {
+            bookList = mapper.readValue(bookFile, new TypeReference<>() {
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void put(Book book) {
-
+        read();
         bookList.add(book);
         this.update();
     }
@@ -33,7 +49,6 @@ public class BookStorage implements Storage<Book> {
     @Override
     public void update() {
         collapseBooks();
-        ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
             mapper.writer().writeValue(bookFile, bookList);
@@ -43,7 +58,8 @@ public class BookStorage implements Storage<Book> {
     }
 
     public Book findBookByTitle(String title) throws BookNotFoundException {
-        System.out.println(title);
+        read();
+        update();
         Book foundBook = bookList.stream()
                 .filter(book -> book.getTitle().equals(title))
                 .findAny()
@@ -56,10 +72,11 @@ public class BookStorage implements Storage<Book> {
         }
     }
 
-
     // Keep in mind that the String author could be name, surname or both
-    public List<Book> findBookByAuthor(String author) throws AuthorDoesNotExistsException {
 
+    public List<Book> findBookByAuthor(String author) throws AuthorDoesNotExistsException {
+        read();
+        update();
         List<Book> foundByName = bookList.stream()
                 .filter(book -> book.getAuthorsName().equals(author))
                 .collect(Collectors.toList());
@@ -73,20 +90,19 @@ public class BookStorage implements Storage<Book> {
         if (foundBySurname.size() > 0) return foundBySurname;
 
         List<Book> foundByNameAndSurname = bookList.stream()
-                .filter(book -> (book.getAuthorsName() + " " +book.getAuthorsSurname()).equals(author))
+                .filter(book -> (book.getAuthorsName() + " " + book.getAuthorsSurname()).equals(author))
                 .collect(Collectors.toList());
 
         if (foundByNameAndSurname.size() > 0) return foundByNameAndSurname;
 
         throw new AuthorDoesNotExistsException();
     }
-
-    public void collapseBooks(){
+    public void collapseBooks() {
         bookList = bookListCollapser.collapseBooks(bookList);
     }
 
-
-    public void returnBook(Book book){
+    public void addToExistingBook(Book book) {
+        read();
         Book booksThatMatchBorrowedBook = bookList.stream()
                 .filter(book1 -> book1.getAuthorsName().equals(book.getAuthorsName()) &&
                         book1.getAuthorsSurname().equals(book.getAuthorsSurname()) &&
@@ -102,11 +118,11 @@ public class BookStorage implements Storage<Book> {
         this.put(booksThatMatchBorrowedBook);
     }
 
-    public void borrowBook(Book book){
+    public List<Book> getBookList() {
+        return this.bookList;
+    }
 
-        for (Book book1: bookList){
-            System.out.println(book1);
-        }
+    public void remove(Book book){
         Book booksThatMatchBorrowedBook = bookList.stream()
                 .filter(book1 -> book1.getAuthorsName().equals(book.getAuthorsName()) &&
                         book1.getAuthorsSurname().equals(book.getAuthorsSurname()) &&
@@ -114,15 +130,8 @@ public class BookStorage implements Storage<Book> {
                         book1.getTitle().equals(book.getTitle())
                 ).findAny()
                 .get();
-
-        System.out.println(booksThatMatchBorrowedBook.getQuantity());
-
         bookList.remove(booksThatMatchBorrowedBook);
-
-
-        booksThatMatchBorrowedBook.remove(book.getQuantity());
-
-
-        this.put(booksThatMatchBorrowedBook);
+        update();
     }
+
 }

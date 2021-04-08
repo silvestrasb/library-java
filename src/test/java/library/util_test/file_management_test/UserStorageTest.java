@@ -44,7 +44,7 @@ public class UserStorageTest {
 
         File userFile = new File(USER_DATA_FILENAME);
 
-        List<? extends User> userList = mapper.readValue(userFile, new TypeReference<List<? extends User>>() {
+        List<? extends User> userList = mapper.readValue(userFile, new TypeReference<>() {
         });
 
         boolean correctInstancesCreated = userList.stream()

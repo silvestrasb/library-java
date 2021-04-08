@@ -1,5 +1,6 @@
 package library.util.file_managament;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import library.exception.EmailAlreadyExistsException;
@@ -20,6 +21,21 @@ public class UserStorage<E extends User> implements Storage<E> {
 
     private List<E> userList = new ArrayList<>();
 
+    private ObjectMapper mapper = new ObjectMapper();
+
+    public UserStorage() {
+        read();
+    }
+
+    private void read(){
+        try {
+            userList = mapper.readValue(userFile, new TypeReference<>() {
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void put(E user) throws EmailAlreadyExistsException {
         duplicateEmailCheck(user.getEmail());
@@ -29,7 +45,6 @@ public class UserStorage<E extends User> implements Storage<E> {
 
     @Override
     public void update() {
-        ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         try {
             mapper.writer().writeValue(userFile, userList);
@@ -50,6 +65,7 @@ public class UserStorage<E extends User> implements Storage<E> {
     }
 
     public User get(String email, String password) throws UserNotFoundException {
+        read();
         try {
             return userList.stream()
                     .filter(user -> user.getEmail().equals(email) && user.getPassword().equals(password))
@@ -60,6 +76,7 @@ public class UserStorage<E extends User> implements Storage<E> {
     }
 
     private void duplicateEmailCheck(String userEmail) throws EmailAlreadyExistsException {
+        read();
         if (userList.stream()
                 .anyMatch(user -> user.getEmail().equals(userEmail))) {
             throw new EmailAlreadyExistsException();

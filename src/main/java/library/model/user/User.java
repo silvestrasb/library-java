@@ -78,6 +78,8 @@ public abstract class User implements Nameable, Registrable, Borrowing {
 
     public void returnBorrowedBook(Book book) throws BookNotFoundException {
 
+        BookListCollapser bookListCollapser = new BookListCollapser();
+
         Book bookFromTheList = borrowedBooks.stream()
                 .filter(b -> b.getAuthorsName().equals(book.getAuthorsName()) &&
                         b.getAuthorsSurname().equals(book.getAuthorsSurname()) &&
@@ -89,10 +91,10 @@ public abstract class User implements Nameable, Registrable, Borrowing {
             throw new BookNotFoundException();
         }
 
-        borrowedBooks.remove(bookFromTheList);
-        bookFromTheList.remove(book.getQuantity());
+
+        borrowedBooks.remove(book);
+
         if (bookFromTheList.getQuantity() != 0) borrowedBooks.add(bookFromTheList);
-
+        borrowedBooks = bookListCollapser.collapseBooks(borrowedBooks);
     }
-
 }
