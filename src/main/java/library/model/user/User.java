@@ -45,34 +45,4 @@ public abstract class User implements Borrow {
         this.password = DigestUtils.sha256Hex(password);
     }
 
-    @Override
-    public void borrowBook(Book book) {
-        BookListCollapser bookListCollapser = new BookListCollapser();
-
-        borrowedBooks.add(book);
-
-        borrowedBooks = bookListCollapser.collapseBooks(borrowedBooks);
-    }
-
-    public void returnBorrowedBook(Book book) throws BookNotFoundException {
-
-        BookListCollapser bookListCollapser = new BookListCollapser();
-
-        Book bookFromTheList = borrowedBooks.stream()
-                .filter(b -> b.getAuthorsName().equals(book.getAuthorsName()) &&
-                        b.getAuthorsSurname().equals(book.getAuthorsSurname()) &&
-                        b.getTitle().equals(book.getTitle()))
-                .findFirst()
-                .orElse(null);
-
-        if (bookFromTheList == null) {
-            throw new BookNotFoundException();
-        }
-
-
-        borrowedBooks.remove(book);
-
-        if (bookFromTheList.getQuantity() != 0) borrowedBooks.add(bookFromTheList);
-        borrowedBooks = bookListCollapser.collapseBooks(borrowedBooks);
-    }
 }
