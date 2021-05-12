@@ -1,8 +1,5 @@
 package library.model.user;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
-
-@JsonTypeName("ReaderUser")
 public class ReaderUser extends User {
 
     public ReaderUser() {
