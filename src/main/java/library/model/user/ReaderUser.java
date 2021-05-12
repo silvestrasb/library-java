@@ -1,6 +1,10 @@
 package library.model.user;
 
-public class ReaderUser extends User {
+import library.model.book.Book;
 
+import java.util.List;
+
+public class ReaderUser extends User {
+    List<Book> borrowedBooks;
 }
 
