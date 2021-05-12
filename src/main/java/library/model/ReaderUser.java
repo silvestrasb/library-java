@@ -1,6 +1,5 @@
-package library.model.user;
+package library.model;
 
-import library.model.book.Book;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
