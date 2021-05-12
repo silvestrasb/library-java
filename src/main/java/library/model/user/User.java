@@ -1,13 +1,18 @@
 package library.model.user;
 
 import library.model.book.Book;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.apache.commons.codec.digest.DigestUtils;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class User {
 
     private String name;
@@ -15,15 +20,5 @@ public abstract class User {
     private String email;
     private String password;
     private List<Book> borrowedBooks = new ArrayList<>();
-
-    public User() {
-    }
-
-    public User(String name, String surname, String email, String password) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.password = DigestUtils.sha256Hex(password);
-    }
 
 }
