@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import library.exception.BookNotFoundException;
-import library.model.Nameable;
 import library.model.book.Book;
 import library.util.collapser.BookListCollapser;
+import lombok.Getter;
+import lombok.experimental.FieldNameConstants;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.ArrayList;
@@ -22,9 +23,11 @@ import java.util.List;
         @JsonSubTypes.Type(value = ReaderUser.class, name = "ReaderUser")}
 )
 
-public abstract class User implements Nameable, Registrable, Borrowing {
+@Getter
+public abstract class User implements Borrow {
 
     @JsonProperty("type")
+    @FieldNameConstants.Exclude
     private String type = this.getClass().getSimpleName(); // Needed for json polymorphic deserialization
     private String name;
     private String surname;
@@ -40,31 +43,6 @@ public abstract class User implements Nameable, Registrable, Borrowing {
         this.surname = surname;
         this.email = email;
         this.password = DigestUtils.sha256Hex(password);
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public String getSurname() {
-        return this.surname;
-    }
-
-    @Override
-    public String getEmail() {
-        return this.email;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
-    }
-
-    @Override
-    public List<Book> getBorrowedBooks() {
-        return borrowedBooks;
     }
 
     @Override
