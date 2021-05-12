@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public abstract class User implements Borrow {
+public abstract class User {
 
     private String name;
     private String surname;
