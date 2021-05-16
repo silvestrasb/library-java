@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import library.exception.AuthorDoesNotExistsException;
 import library.exception.BookNotFoundException;
 import library.entity.book.Book;
-import library.util.collapser.BookListCollapser;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +21,6 @@ public class BookStorage implements Storage<Book> {
 
     private List<Book> bookList = new ArrayList<>();
 
-    private BookListCollapser bookListCollapser = new BookListCollapser();
 
     private ObjectMapper mapper = new ObjectMapper();
 
@@ -98,25 +96,8 @@ public class BookStorage implements Storage<Book> {
         throw new AuthorDoesNotExistsException();
     }
     public void collapseBooks() {
-        bookList = bookListCollapser.collapseBooks(bookList);
     }
 
-    public void addToExistingBook(Book book) {
-        read();
-        Book booksThatMatchBorrowedBook = bookList.stream()
-                .filter(book1 -> book1.getAuthorsName().equals(book.getAuthorsName()) &&
-                        book1.getAuthorsSurname().equals(book.getAuthorsSurname()) &&
-                        book1.getGenre().equals(book.getGenre()) &&
-                        book1.getTitle().equals(book.getTitle())
-                ).findAny()
-                .get();
-
-        bookList.remove(booksThatMatchBorrowedBook);
-
-        booksThatMatchBorrowedBook.add(book.getQuantity());
-
-        this.put(booksThatMatchBorrowedBook);
-    }
 
     public List<Book> getBookList() {
         return this.bookList;

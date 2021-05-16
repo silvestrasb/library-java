@@ -34,8 +34,7 @@ public class FakeGenerator {
         String authorsName = faker.name().firstName();
         String authorsSurname = faker.name().lastName();
         String genre = faker.book().genre();
-        int quantity = faker.number().numberBetween(1, 100);
 
-        return new Book(title, authorsName, authorsSurname, genre, quantity);
+        return new Book(title, authorsName, authorsSurname, genre);
     }
 }

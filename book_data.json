@@ -2,12 +2,15 @@
   "title" : "To Your Scattered Bodies Go",
   "authorsName" : "Marisol",
   "authorsSurname" : "Kuhn",
-  "genre" : "Metafiction",
-  "quantity" : 72
+  "genre" : "Metafiction"
 }, {
   "title" : "An Evil Cradling",
   "authorsName" : "Hugh",
   "authorsSurname" : "Ernser",
-  "genre" : "Historical fiction",
-  "quantity" : 3910
+  "genre" : "Historical fiction"
+}, {
+  "title" : "To Your Scattered Bodies Go",
+  "authorsName" : "Marisol",
+  "authorsSurname" : "Kuhn",
+  "genre" : "Metafiction"
 } ]

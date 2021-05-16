@@ -94,9 +94,9 @@ public class BookStorageTest {
 
         BookStorage bookStorage = new BookStorage();
 
-        Book book1 = new Book("Horrors of Testing.", "Lorem", "Ipsum", "Horror", 1);
-        Book book2 = new Book("Space Testing.", "Lorem", "Ipsum", "Sci-fi", 2);
-        Book book3 = new Book("Test, please don't leave!", "Lorem", "Ipsum", "Drama", 3);
+        Book book1 = new Book("Horrors of Testing.", "Lorem", "Ipsum", "Horror");
+        Book book2 = new Book("Space Testing.", "Lorem", "Ipsum", "Sci-fi");
+        Book book3 = new Book("Test, please don't leave!", "Lorem", "Ipsum", "Drama");
         Book book4 = fakeGenerator.generateBook();
         Book book5 = fakeGenerator.generateBook();
 
@@ -121,9 +121,9 @@ public class BookStorageTest {
 
         BookStorage bookStorage = new BookStorage();
 
-        Book book1 = new Book("Horrors of Testing.", "Lorem", "Ipsum", "Horror", 1);
-        Book book2 = new Book("Space Testing.", "Lorem", "Ipsum", "Sci-fi", 2);
-        Book book3 = new Book("Test, please don't leave!", "Lorem", "Ipsum", "Drama", 3);
+        Book book1 = new Book("Horrors of Testing.", "Lorem", "Ipsum", "Horror");
+        Book book2 = new Book("Space Testing.", "Lorem", "Ipsum", "Sci-fi");
+        Book book3 = new Book("Test, please don't leave!", "Lorem", "Ipsum", "Drama");
         Book book4 = fakeGenerator.generateBook();
         Book book5 = fakeGenerator.generateBook();
 
@@ -149,9 +149,9 @@ public class BookStorageTest {
 
         BookStorage bookStorage = new BookStorage();
 
-        Book book1 = new Book("Horrors of Testing.", "Lorem", "Ipsum", "Horror", 1);
-        Book book2 = new Book("Space Testing.", "Lorem", "Ipsum", "Sci-fi", 2);
-        Book book3 = new Book("Test, please don't leave!", "Lorem", "Ipsum", "Drama", 3);
+        Book book1 = new Book("Horrors of Testing.", "Lorem", "Ipsum", "Horror");
+        Book book2 = new Book("Space Testing.", "Lorem", "Ipsum", "Sci-fi");
+        Book book3 = new Book("Test, please don't leave!", "Lorem", "Ipsum", "Drama");
         Book book4 = fakeGenerator.generateBook();
         Book book5 = fakeGenerator.generateBook();
 
@@ -176,9 +176,9 @@ public class BookStorageTest {
 
         BookStorage bookStorage = new BookStorage();
 
-        Book book1 = new Book("Horrors of Testing.", "Lorem", "Ipsum", "Horror", 1);
-        Book book2 = new Book("Space Testing.", "Lorem", "Ipsum", "Sci-fi", 2);
-        Book book3 = new Book("Test, please don't leave!", "Lorem", "Ipsum", "Drama", 3);
+        Book book1 = new Book("Horrors of Testing.", "Lorem", "Ipsum", "Horror");
+        Book book2 = new Book("Space Testing.", "Lorem", "Ipsum", "Sci-fi");
+        Book book3 = new Book("Test, please don't leave!", "Lorem", "Ipsum", "Drama");
         Book book4 = fakeGenerator.generateBook();
         Book book5 = fakeGenerator.generateBook();
 
@@ -193,58 +193,4 @@ public class BookStorageTest {
 
     }
 
-    @Test
-    public void returnBorrowedBook_ReturnOneBook_oneLessInList() throws BookNotFoundException {
-        BookStorage bookStorage = new BookStorage();
-
-        Book book1 = fakeGenerator.generateBook();
-        Book book2 = fakeGenerator.generateBook();
-        Book book3 = fakeGenerator.generateBook();
-        Book book4 = fakeGenerator.generateBook();
-        Book bookį = fakeGenerator.generateBook();
-        Book book5 = new Book("Horrors of Testing.", "Lorem", "Ipsum", "Horror", 10);
-
-
-        bookStorage.put(book1);
-        bookStorage.put(book2);
-        bookStorage.put(book3);
-        bookStorage.put(book4);
-        bookStorage.put(book5);
-
-        Book returnBook = new Book("Horrors of Testing.", "Lorem", "Ipsum", "Horror", 1);
-
-        bookStorage.addToExistingBook(returnBook);
-
-        Book book = bookStorage.findBookByTitle("Horrors of Testing.");
-
-        assertEquals(11, book.getQuantity());
-
-    }
-
-    @Test
-    public void returnBorrowedBook_ReturnCoupleSameBooks_BookListIsExpectedlySmaller() throws BookNotFoundException {
-        BookStorage bookStorage = new BookStorage();
-
-        Book book1 = fakeGenerator.generateBook();
-        Book book2 = fakeGenerator.generateBook();
-        Book book3 = fakeGenerator.generateBook();
-        Book book4 = fakeGenerator.generateBook();
-        Book bookį = fakeGenerator.generateBook();
-        Book book5 = new Book("Horrors of Testing.", "Lorem", "Ipsum", "Horror", 100);
-        Book returnBook = new Book("Horrors of Testing.", "Lorem", "Ipsum", "Horror", 30);
-
-
-        bookStorage.put(book1);
-        bookStorage.put(book2);
-        bookStorage.put(book3);
-        bookStorage.put(book4);
-        bookStorage.put(book5);
-
-        bookStorage.addToExistingBook(returnBook);
-
-        Book book = bookStorage.findBookByTitle("Horrors of Testing.");
-
-        assertEquals(130, book.getQuantity());
-
-    }
 }

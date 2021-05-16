@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import library.entity.Nameable;
 import library.entity.book.Book;
 import library.exception.BookNotFoundException;
-import library.util.collapser.BookListCollapser;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.ArrayList;
@@ -18,7 +17,6 @@ import java.util.List;
         property = "type",
         visible = true)
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = WriterUser.class, name = "WriterUser"),
         @JsonSubTypes.Type(value = ReaderUser.class, name = "ReaderUser")}
 )
 
@@ -69,32 +67,13 @@ public abstract class User implements Nameable, Registrable, Borrowing {
 
     @Override
     public void borrowBook(Book book) {
-        BookListCollapser bookListCollapser = new BookListCollapser();
 
         borrowedBooks.add(book);
 
-        borrowedBooks = bookListCollapser.collapseBooks(borrowedBooks);
     }
 
     public void returnBorrowedBook(Book book) throws BookNotFoundException {
 
-        BookListCollapser bookListCollapser = new BookListCollapser();
-
-        Book bookFromTheList = borrowedBooks.stream()
-                .filter(b -> b.getAuthorsName().equals(book.getAuthorsName()) &&
-                        b.getAuthorsSurname().equals(book.getAuthorsSurname()) &&
-                        b.getTitle().equals(book.getTitle()))
-                .findFirst()
-                .orElse(null);
-
-        if (bookFromTheList == null) {
-            throw new BookNotFoundException();
-        }
-
-
         borrowedBooks.remove(book);
-
-        if (bookFromTheList.getQuantity() != 0) borrowedBooks.add(bookFromTheList);
-        borrowedBooks = bookListCollapser.collapseBooks(borrowedBooks);
     }
 }

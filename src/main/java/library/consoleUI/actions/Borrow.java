@@ -43,8 +43,7 @@ public class Borrow {
             bookMap.put(booksByAuthor.indexOf(book), book);
             System.out.println("[" + booksByAuthor.indexOf(book) + "]"
                     + " Title : " + book.getTitle()
-                    + " Genre : " + book.getGenre()
-                    + " Quantity :" + book.getQuantity());
+                    + " Genre : " + book.getGenre());
         }
         System.out.println("Borrow? [Y/N]");
         String rentStatus = in.next().toUpperCase();
@@ -66,22 +65,8 @@ public class Borrow {
 
                 Book book = bookMap.get(index);
 
-                System.out.println("How many would you like to borrow?");
-                int bookQuantity = 0;
-                try {
-                    bookQuantity = in.nextInt();
-                    if (!(bookQuantity > 0 && bookQuantity <= book.getQuantity())) {
-                        System.out.println("Invalid quantity.");
-                        return;
-                    }
-                }catch (Exception e){
-                    System.out.println("Invalid quantity.");
-                    return;
-                }
 
-                book.setQuantity(bookQuantity);
                 user.borrowBook(book);
-                book.setQuantity(-bookQuantity);
                 bookStorage.put(book);
                 userStorage.updateUser(user);
                 System.out.println("Happy reading, book borrowed successfully");
@@ -108,28 +93,12 @@ public class Borrow {
 
         System.out.println("Author : " + book.getAuthorsName()
                 + " " + book.getAuthorsSurname()
-                + " Genre : " + book.getGenre()
-                + " Quantity :" + book.getQuantity());
+                + " Genre : " + book.getGenre());
         System.out.println("Borrow? [Y/N]");
         String rentStatus = in.next().toUpperCase();
         switch (rentStatus) {
             case "Y":
-                System.out.println("How many would you like to borrow?");
-                int numberOfBooks = in.nextInt();
-                if (!(numberOfBooks > 0 && numberOfBooks <= book.getQuantity())) {
-                    System.out.println("Invalid quantity.");
-                    return;
-                }
-
-                book.setQuantity(numberOfBooks);
                 user.borrowBook(book);
-                userStorage.updateUser(user);
-
-
-                int oldQuantity = book.getQuantity();
-                book.setQuantity(numberOfBooks);
-                user.borrowBook(book);
-                book.setQuantity(oldQuantity - numberOfBooks);
                 userStorage.updateUser(user);
                 System.out.println("Happy reading, book borrowed successfully");
                 break;
@@ -143,8 +112,7 @@ public class Borrow {
     public void userBorrowedBooks() {
         beautifyPrint("borrowed books");
         for (Book book : user.getBorrowedBooks()) {
-            System.out.println("Quantity : " + book.getQuantity() +
-                    ", Book: " + book.getTitle() +
+            System.out.println("Book: " + book.getTitle() +
                     " by " + book.getAuthorsName() + " " + book.getAuthorsSurname());
         }
     }

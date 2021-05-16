@@ -32,8 +32,7 @@ public class Return {
         for (Book book : user.getBorrowedBooks()) {
             bookMap.put(user.getBorrowedBooks().indexOf(book), book);
             System.out.println("[" + user.getBorrowedBooks().indexOf(book) + "]" +
-                    "Quantity : " + book.getQuantity() +
-                    ", Book: " + book.getTitle() +
+                    "Book: " + book.getTitle() +
                     " by " + book.getAuthorsName() + " " + book.getAuthorsSurname());
         }
         System.out.println("Which book would you like to return?");
@@ -58,19 +57,6 @@ public class Return {
             bookStorage.put(book);
         }
 
-        System.out.println("How many would you like to return?");
-        int numberOfBooks = 0;
-
-        try {
-            numberOfBooks = in.nextInt();
-            if (!(numberOfBooks > 0 && numberOfBooks <= book.getQuantity())) {
-                System.out.println("Invalid quantity.");
-                return;
-            }
-        } catch (Exception e){
-            System.out.println("Invalid Number");
-            return;
-        }
 
         Book borrowedBook = user.getBorrowedBooks().stream()
                 .filter(b -> b.getAuthorsName().equals(book.getAuthorsName()) &&
@@ -81,15 +67,12 @@ public class Return {
                 .get();
 
 
-        borrowedBook.remove(numberOfBooks);
 
         try {
             user.returnBorrowedBook(borrowedBook);
-            storageBook.setQuantity(numberOfBooks);
             bookStorage.put(storageBook);
 
         } catch (BookNotFoundException e) {
-            book.add(numberOfBooks);
             bookStorage.put(book);
             return;
         }

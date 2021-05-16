@@ -21,9 +21,15 @@
     "title" : "An Evil Cradling",
     "authorsName" : "Hugh",
     "authorsSurname" : "Ernser",
-    "genre" : "Historical fiction",
-    "quantity" : 1001
+    "genre" : "Historical fiction"
   } ],
+  "type" : "ReaderUser"
+}, {
+  "name" : "inesa",
+  "surname" : "sakalas",
+  "email" : "inesa.inw@mail.com",
+  "password" : "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+  "borrowedBooks" : [ ],
   "type" : "ReaderUser"
 }, {
   "name" : "Silvestras",
@@ -34,21 +40,17 @@
     "title" : "To Your Scattered Bodies Go",
     "authorsName" : "Marisol",
     "authorsSurname" : "Kuhn",
-    "genre" : "Metafiction",
-    "quantity" : 6
+    "genre" : "Metafiction"
   }, {
     "title" : "An Evil Cradling",
     "authorsName" : "Hugh",
     "authorsSurname" : "Ernser",
-    "genre" : "Historical fiction",
-    "quantity" : 22
+    "genre" : "Historical fiction"
+  }, {
+    "title" : "To Your Scattered Bodies Go",
+    "authorsName" : "Marisol",
+    "authorsSurname" : "Kuhn",
+    "genre" : "Metafiction"
   } ],
-  "type" : "ReaderUser"
-}, {
-  "name" : "inesa",
-  "surname" : "sakalas",
-  "email" : "inesa.inw@mail.com",
-  "password" : "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-  "borrowedBooks" : [ ],
   "type" : "ReaderUser"
 } ]
