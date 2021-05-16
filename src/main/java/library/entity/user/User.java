@@ -1,4 +1,4 @@
-package library.model.user;
+package library.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;

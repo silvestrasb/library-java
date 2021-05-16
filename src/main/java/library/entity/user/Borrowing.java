@@ -1,4 +1,4 @@
-package library.model.user;
+package library.entity.user;
 
 import library.model.book.Book;
 import java.util.List;

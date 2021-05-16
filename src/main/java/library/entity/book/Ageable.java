@@ -1,4 +1,4 @@
-package library.model.book;
+package library.entity.book;
 
 public interface Ageable {
     int getAge();

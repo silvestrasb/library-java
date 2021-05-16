@@ -1,4 +1,4 @@
-package library.model;
+package library.entity;
 
 public interface Nameable {
     String getName();

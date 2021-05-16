@@ -1,4 +1,4 @@
-package library.model.user;
+package library.entity.user;
 
 public interface Registrable {
 

@@ -1,4 +1,4 @@
-package library.model.book;
+package library.entity.book;
 
 public class Book implements Quantifiable, Releasable {
 

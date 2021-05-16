@@ -1,4 +1,5 @@
-package library.model.book;
+package library.entity.book;
+
 
 import java.time.LocalDate;
 
