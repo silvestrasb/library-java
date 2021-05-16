@@ -3,7 +3,7 @@ package library.entity.user;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("ReaderUser")
-public class ReaderUser extends library.model.user.User {
+public class ReaderUser extends User {
 
     public ReaderUser() {
     }

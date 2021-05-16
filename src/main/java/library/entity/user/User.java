@@ -3,9 +3,9 @@ package library.entity.user;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import library.entity.Nameable;
+import library.entity.book.Book;
 import library.exception.BookNotFoundException;
-import library.model.Nameable;
-import library.model.book.Book;
 import library.util.collapser.BookListCollapser;
 import org.apache.commons.codec.digest.DigestUtils;
 

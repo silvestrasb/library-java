@@ -1,8 +1,8 @@
 package library.consoleUI.book_data;
 
 import library.consoleUI.text_formatter.Beautify;
-import library.model.book.Book;
-import library.model.user.User;
+import library.entity.book.Book;
+import library.entity.user.User;
 import library.util.file_managament.BookStorage;
 
 import static library.consoleUI.text_formatter.Beautify.beautifyPrint;

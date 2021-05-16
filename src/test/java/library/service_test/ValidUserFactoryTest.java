@@ -1,9 +1,9 @@
 package library.service_test;
 
-import library.model.enums.UserType;
+import library.entity.enums.UserType;
 import library.exception.InvalidEmailException;
-import library.model.user.ReaderUser;
-import library.model.user.User;
+import library.entity.user.ReaderUser;
+import library.entity.user.User;
 import library.service.factory.ValidUserFactory;
 import org.junit.Test;
 

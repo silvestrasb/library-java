@@ -1,9 +1,9 @@
 package library.service.factory;
 
 import library.exception.InvalidEmailException;
-import library.model.enums.UserType;
-import library.model.user.ReaderUser;
-import library.model.user.User;
+import library.entity.enums.UserType;
+import library.entity.user.ReaderUser;
+import library.entity.user.User;
 import library.util.validators.EmailValidator;
 
 public class ValidUserFactory {

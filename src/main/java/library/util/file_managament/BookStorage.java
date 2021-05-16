@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import library.exception.AuthorDoesNotExistsException;
 import library.exception.BookNotFoundException;
-import library.model.book.Book;
+import library.entity.book.Book;
 import library.util.collapser.BookListCollapser;
 
 import java.io.File;

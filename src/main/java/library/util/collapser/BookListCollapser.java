@@ -1,6 +1,6 @@
 package library.util.collapser;
 
-import library.model.book.Book;
+import library.entity.book.Book;
 
 import java.util.*;
 import java.util.stream.Collectors;

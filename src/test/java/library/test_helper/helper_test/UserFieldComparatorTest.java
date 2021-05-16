@@ -1,9 +1,9 @@
 package library.test_helper.helper_test;
 
 import library.exception.InvalidEmailException;
-import library.model.book.Book;
-import library.model.user.ReaderUser;
-import library.model.user.User;
+import library.entity.book.Book;
+import library.entity.user.ReaderUser;
+import library.entity.user.User;
 import library.test_helper.comparator.UserFieldComparator;
 import library.test_helper.fake_object_generators.FakeGenerator;
 import org.junit.Test;

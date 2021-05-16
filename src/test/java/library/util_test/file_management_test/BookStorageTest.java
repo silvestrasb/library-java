@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import library.exception.AuthorDoesNotExistsException;
 import library.exception.BookNotFoundException;
-import library.model.book.Book;
+import library.entity.book.Book;
 import library.test_helper.fake_object_generators.FakeGenerator;
 import library.util.file_managament.BookStorage;
 import org.junit.Test;

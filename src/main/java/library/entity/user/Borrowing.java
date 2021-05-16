@@ -1,6 +1,7 @@
 package library.entity.user;
 
-import library.model.book.Book;
+import library.entity.book.Book;
+
 import java.util.List;
 
 public interface Borrowing {

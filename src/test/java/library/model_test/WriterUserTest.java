@@ -1,8 +1,8 @@
 package library.model_test;
 
-import library.model.book.Book;
-import library.model.user.ReaderUser;
-import library.model.user.User;
+import library.entity.book.Book;
+import library.entity.user.ReaderUser;
+import library.entity.user.User;
 import library.test_helper.fake_object_generators.FakeGenerator;
 import library.util.collapser.BookListCollapser;
 import org.junit.Test;

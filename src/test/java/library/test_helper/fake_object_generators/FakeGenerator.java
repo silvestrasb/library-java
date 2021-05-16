@@ -2,9 +2,9 @@ package library.test_helper.fake_object_generators;
 
 import com.github.javafaker.Faker;
 import library.exception.InvalidEmailException;
-import library.model.book.Book;
-import library.model.enums.UserType;
-import library.model.user.ReaderUser;
+import library.entity.book.Book;
+import library.entity.enums.UserType;
+import library.entity.user.ReaderUser;
 import library.service.factory.ValidUserFactory;
 
 public class FakeGenerator {

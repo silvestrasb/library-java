@@ -1,8 +1,8 @@
 package library.consoleUI.actions;
 
 import library.exception.BookNotFoundException;
-import library.model.book.Book;
-import library.model.user.User;
+import library.entity.book.Book;
+import library.entity.user.User;
 import library.util.file_managament.BookStorage;
 import library.util.file_managament.UserStorage;
 

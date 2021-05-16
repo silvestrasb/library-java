@@ -4,7 +4,7 @@ import library.consoleUI.actions.Borrow;
 import library.consoleUI.actions.LogIn;
 import library.consoleUI.actions.Return;
 import library.consoleUI.book_data.PrintBooks;
-import library.model.user.User;
+import library.entity.user.User;
 import library.service.factory.ValidUserFactory;
 import library.util.file_managament.BookStorage;
 import library.util.file_managament.UserStorage;

@@ -1,6 +1,6 @@
 package library.util_test.collapser_test;
 
-import library.model.book.Book;
+import library.entity.book.Book;
 import library.test_helper.fake_object_generators.FakeGenerator;
 import library.util.collapser.BookListCollapser;
 import org.junit.Test;

@@ -1,8 +1,8 @@
 package library.test_helper.comparator;
 
-import library.model.book.Book;
-import library.model.user.ReaderUser;
-import library.model.user.User;
+import library.entity.book.Book;
+import library.entity.user.ReaderUser;
+import library.entity.user.User;
 
 import java.util.Comparator;
 import java.util.List;

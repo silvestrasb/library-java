@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import library.exception.EmailAlreadyExistsException;
 import library.exception.UserNotFoundException;
-import library.model.user.User;
+import library.entity.user.User;
 
 import java.io.File;
 import java.io.IOException;
