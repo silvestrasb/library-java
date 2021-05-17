@@ -24,8 +24,8 @@ public class ReaderUserService {
             session.saveOrUpdate(user);
             transaction.commit();
         } catch (Exception e) {
-            e.printStackTrace();
             transaction.rollback();
+            throw new InvalidEmailException();
         } finally {
             session.close();
         }
@@ -74,10 +74,6 @@ public class ReaderUserService {
         }
 
         return readerUser;
-    }
-
-    // todo: added unique constraints
-    private void duplicateEmailCheck(String userEmail) throws EmailAlreadyExistsException {
     }
 
     private void emailValidator(String userEmail) throws InvalidEmailException {

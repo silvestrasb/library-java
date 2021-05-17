@@ -81,7 +81,7 @@ public class LogIn {
             System.out.println("Invalid email");
             user = null;
             return;
-        } catch (EmailAlreadyExistsException e) {
+        } catch (Exception e) {
             System.out.println("Email already exists");
             user = null;
             return;
