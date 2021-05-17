@@ -1,81 +1,58 @@
 package library.consoleUI.actions;
 
+import library.entity.Book;
+import library.entity.ReaderUser;
 import library.exception.BookNotFoundException;
-import library.entity.book.Book;
-import library.entity.user.User;
-import library.util.file_managament.BookStorage;
-import library.util.file_managament.UserStorage;
+import library.exception.ReaderUserNotFoundException;
+import library.service.BorrowService;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 import static library.consoleUI.text_formatter.Beautify.beautifyPrint;
 
 public class Return {
 
-    private BookStorage bookStorage = new BookStorage();
-    private UserStorage userStorage = new UserStorage();
-    private Scanner in = new Scanner(System.in);
-    private User user;
+    private final Scanner in = new Scanner(System.in);
+    private final BorrowService borrowService = new BorrowService();
+    private final ReaderUser user;
 
-    public Return(User user) {
+    public Return(ReaderUser user) {
         this.user = user;
     }
 
-    public void returnBook() {
+    public void returnBook() throws ReaderUserNotFoundException, BookNotFoundException {
         beautifyPrint("borrowed books");
 
         Map<Integer, Book> bookMap = new HashMap<>();
 
-        for (Book book : user.getBorrowedBooks()) {
-            bookMap.put(user.getBorrowedBooks().indexOf(book), book);
-            System.out.println("[" + user.getBorrowedBooks().indexOf(book) + "]" +
+        List<Book> userBooks = borrowService.listReaderUserBooks(user.getId());
+
+        for (Book book : userBooks) {
+            bookMap.put(userBooks.indexOf(book), book);
+            System.out.println("[" + userBooks.indexOf(book) + "]" +
                     "Book: " + book.getTitle() +
                     " by " + book.getAuthorsName() + " " + book.getAuthorsSurname());
         }
         System.out.println("Which book would you like to return?");
 
-
-        int index = 0;
+        int index;
         try {
-            index = in.nextInt();
+            index = Integer.parseInt(in.nextLine());
             if (!(index > -1 && index < bookMap.size())) {
                 System.out.println("Wrong index.");
                 return;
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Wrong index.");
             return;
         }
         Book book = bookMap.get(index);
-        Book storageBook = null;
-        try {
-            storageBook = bookStorage.findBookByTitle(book.getTitle());
-        } catch (BookNotFoundException e) {
-            bookStorage.put(book);
-        }
 
+        borrowService.returnBook(book);
 
-        Book borrowedBook = user.getBorrowedBooks().stream()
-                .filter(b -> b.getAuthorsName().equals(book.getAuthorsName()) &&
-                        b.getAuthorsSurname().equals(book.getAuthorsSurname()) &&
-                        b.getGenre().equals(book.getGenre()) &&
-                        b.getTitle().equals(book.getTitle()))
-                .findFirst()
-                .get();
-
-
-
-        try {
-            user.returnBorrowedBook(borrowedBook);
-            bookStorage.put(storageBook);
-
-        } catch (BookNotFoundException e) {
-            bookStorage.put(book);
-            return;
-        }
         System.out.println("Book returned successfully.");
     }
 }

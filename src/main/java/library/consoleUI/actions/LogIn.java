@@ -1,13 +1,10 @@
 package library.consoleUI.actions;
 
+import library.entity.ReaderUser;
 import library.exception.EmailAlreadyExistsException;
 import library.exception.InvalidEmailException;
-import library.exception.UserNotFoundException;
-import library.entity.enums.UserType;
-import library.entity.user.User;
-import library.service.factory.ValidUserFactory;
-import library.util.file_managament.UserStorage;
-import org.apache.commons.codec.digest.DigestUtils;
+import library.exception.ReaderUserNotFoundException;
+import library.service.ReaderUserService;
 
 import java.util.Scanner;
 
@@ -15,13 +12,12 @@ import static library.consoleUI.text_formatter.Beautify.beautifyPrint;
 
 public class LogIn {
 
-    private Scanner in = new Scanner(System.in);
-    private UserStorage userStorage = new UserStorage<>();
-    private User user = null;
-    private ValidUserFactory validUserFactory = new ValidUserFactory();
+    private final Scanner in = new Scanner(System.in);
+    private final ReaderUserService readerUserService = new ReaderUserService();
+    private ReaderUser user = null;
 
-    public User start() {
-        beautifyPrint("log in menu");
+    public ReaderUser start() {
+        beautifyPrint("register menu");
         commands();
         while (user == null) {
             String command = in.next();
@@ -39,7 +35,7 @@ public class LogIn {
                     System.out.println("Invalid Command. Type -c to see all commands");
                     break;
             }
-            if (user == null){
+            if (user == null) {
                 beautifyPrint("log in menu");
             }
         }
@@ -52,11 +48,11 @@ public class LogIn {
         String email = in.next();
 
         System.out.print("Please enter your password: ");
-        String password = DigestUtils.sha256Hex(in.next());
+        String password = in.next();
 
         try {
-            user = userStorage.get(email, password);
-        } catch (UserNotFoundException e) {
+            user = readerUserService.get(email, password);
+        } catch (ReaderUserNotFoundException e) {
             System.out.println("User not found!");
             return;
         }
@@ -79,13 +75,15 @@ public class LogIn {
         String password = in.next();
 
         try {
-            user = validUserFactory.getValidUser(UserType.REGULAR_USER, name, surname, email, password);
-            userStorage.put(user);
+            user = new ReaderUser(name, surname, email, password);
+            readerUserService.save(user);
         } catch (InvalidEmailException e) {
             System.out.println("Invalid email");
+            user = null;
             return;
         } catch (EmailAlreadyExistsException e) {
             System.out.println("Email already exists");
+            user = null;
             return;
         }
         System.out.println("Welcome " + user.getName() + "!");

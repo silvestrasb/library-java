@@ -1,7 +1,7 @@
 package library.util_test;
 
 import library.exception.InvalidEmailException;
-import library.util.validators.EmailValidator;
+import library.util.EmailValidator;
 import org.junit.Test;
 
 public class EmailValidatorTest {

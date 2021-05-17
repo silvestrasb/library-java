@@ -1,56 +1,501 @@
 [ {
+  "id" : 0,
   "name" : "Inesa",
   "surname" : "Bumblauskaite",
   "email" : "inesa.bumblauskaite@gmail.com",
   "password" : "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-  "borrowedBooks" : [ ],
-  "type" : "ReaderUser"
+  "borrowedBooks" : [ ]
 }, {
+  "id" : 0,
   "name" : "Odeta",
   "surname" : "Razmine",
   "email" : "odeta.razmine@gmail.com",
   "password" : "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-  "borrowedBooks" : [ ],
-  "type" : "ReaderUser"
+  "borrowedBooks" : [ ]
 }, {
+  "id" : 0,
   "name" : "Inesa",
   "surname" : "Bumblauskaite",
   "email" : "axnoli@gmail.com",
   "password" : "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
   "borrowedBooks" : [ {
+    "id" : 0,
     "title" : "An Evil Cradling",
     "authorsName" : "Hugh",
     "authorsSurname" : "Ernser",
     "genre" : "Historical fiction"
-  } ],
-  "type" : "ReaderUser"
+  } ]
 }, {
+  "id" : 0,
   "name" : "inesa",
   "surname" : "sakalas",
   "email" : "inesa.inw@mail.com",
   "password" : "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-  "borrowedBooks" : [ ],
-  "type" : "ReaderUser"
+  "borrowedBooks" : [ ]
 }, {
+  "id" : 0,
   "name" : "Silvestras",
   "surname" : "Bumblauskas",
   "email" : "123",
   "password" : "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
   "borrowedBooks" : [ {
+    "id" : 0,
     "title" : "To Your Scattered Bodies Go",
     "authorsName" : "Marisol",
     "authorsSurname" : "Kuhn",
     "genre" : "Metafiction"
   }, {
+    "id" : 0,
     "title" : "An Evil Cradling",
     "authorsName" : "Hugh",
     "authorsSurname" : "Ernser",
     "genre" : "Historical fiction"
   }, {
+    "id" : 0,
     "title" : "To Your Scattered Bodies Go",
     "authorsName" : "Marisol",
     "authorsSurname" : "Kuhn",
     "genre" : "Metafiction"
-  } ],
-  "type" : "ReaderUser"
+  }, {
+    "id" : 1,
+    "title" : "title",
+    "authorsName" : "authors_name",
+    "authorsSurname" : "author_surname",
+    "genre" : "genre"
+  }, null ]
+}, {
+  "id" : 0,
+  "name" : "Roselia",
+  "surname" : "Heller",
+  "email" : "roselia.heller@codeacademy.lt",
+  "password" : "4975de3d70bd8020a36d5dca0bfd26487970da50b6026cc4391f5833e9cbde63",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "The Wings of the Dove",
+    "authorsName" : "Ona",
+    "authorsSurname" : "Rutherford",
+    "genre" : "Fable"
+  }, {
+    "id" : 0,
+    "title" : "Time To Murder And Create",
+    "authorsName" : "Pearlie",
+    "authorsSurname" : "Mertz",
+    "genre" : "Historical fiction"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Eddie",
+  "surname" : "Ortiz",
+  "email" : "eddie.ortiz@codeacademy.lt",
+  "password" : "ca04b27e485b5c4a77715608a9b198dae37ed901b5adcab436b990b0fb6c6ba1",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "In a Glass Darkly",
+    "authorsName" : "Dane",
+    "authorsSurname" : "Carroll",
+    "genre" : "Comic/Graphic Novel"
+  }, {
+    "id" : 0,
+    "title" : "Pale Kings and Princes",
+    "authorsName" : "Lavern",
+    "authorsSurname" : "Murphy",
+    "genre" : "Comic/Graphic Novel"
+  }, {
+    "id" : 0,
+    "title" : "The Stars' Tennis Balls",
+    "authorsName" : "Leticia",
+    "authorsSurname" : "Terry",
+    "genre" : "Western"
+  }, {
+    "id" : 0,
+    "title" : "To a God Unknown",
+    "authorsName" : "Sydney",
+    "authorsSurname" : "Murphy",
+    "genre" : "Textbook"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Jacob",
+  "surname" : "Schowalter",
+  "email" : "jacob.schowalter@codeacademy.lt",
+  "password" : "149f6d84f183b5fdd50a167cf899f5830c0137e36e94344a059575c7425fa829",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "The Mermaids Singing",
+    "authorsName" : "Werner",
+    "authorsSurname" : "Wyman",
+    "genre" : "Reference book"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Shelton",
+  "surname" : "Waters",
+  "email" : "shelton.waters@codeacademy.lt",
+  "password" : "fb4b30c38376b7f36d4c6d5013b9bcbdd32f5359b305ccdaf0ad69186dc5f761",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "Sleep the Brave",
+    "authorsName" : "Richard",
+    "authorsSurname" : "Collier",
+    "genre" : "Short story"
+  }, {
+    "id" : 0,
+    "title" : "Postern of Fate",
+    "authorsName" : "Joane",
+    "authorsSurname" : "Herman",
+    "genre" : "Classic"
+  }, {
+    "id" : 0,
+    "title" : "Frequent Hearses",
+    "authorsName" : "Deon",
+    "authorsSurname" : "Orn",
+    "genre" : "Metafiction"
+  }, {
+    "id" : 0,
+    "title" : "To Say Nothing of the Dog",
+    "authorsName" : "Ezra",
+    "authorsSurname" : "Johns",
+    "genre" : "Metafiction"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Ken",
+  "surname" : "Marks",
+  "email" : "ken.marks@codeacademy.lt",
+  "password" : "ae2b9aa34014e6a2d1d27864a75c11676b755b2c476dd7b31ecbf79fd9a8d391",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "Consider the Lilies",
+    "authorsName" : "Kala",
+    "authorsSurname" : "McDermott",
+    "genre" : "Reference book"
+  }, {
+    "id" : 0,
+    "title" : "Edna O'Brien",
+    "authorsName" : "Amos",
+    "authorsSurname" : "Nikolaus",
+    "genre" : "Fiction narrative"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Tonya",
+  "surname" : "Wolf",
+  "email" : "tonya.wolf@codeacademy.lt",
+  "password" : "40a3b54c772c3a7a95cf09fcdb6e4670c377fca1dd8a8a0b8d709c3222a87f48",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "Alone on a Wide, Wide Sea",
+    "authorsName" : "Warren",
+    "authorsSurname" : "Franecki",
+    "genre" : "Narrative nonfiction"
+  }, {
+    "id" : 0,
+    "title" : "No Highway",
+    "authorsName" : "Onie",
+    "authorsSurname" : "Rogahn",
+    "genre" : "Fantasy"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Julissa",
+  "surname" : "Armstrong",
+  "email" : "julissa.armstrong@codeacademy.lt",
+  "password" : "653fe3c9524a96257e1033a91e32d88bd47df6441d7bc8a6d9ab1ce10d48ed81",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "The Grapes of Wrath",
+    "authorsName" : "Bob",
+    "authorsSurname" : "Johnson",
+    "genre" : "Comic/Graphic Novel"
+  }, {
+    "id" : 0,
+    "title" : "A Swiftly Tilting Planet",
+    "authorsName" : "Lakisha",
+    "authorsSurname" : "Schmeler",
+    "genre" : "Realistic fiction"
+  }, {
+    "id" : 0,
+    "title" : "The Stars' Tennis Balls",
+    "authorsName" : "Stephen",
+    "authorsSurname" : "Becker",
+    "genre" : "Textbook"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Vonnie",
+  "surname" : "Herzog",
+  "email" : "vonnie.herzog@codeacademy.lt",
+  "password" : "34ea8feb1780156e04525ff19de47d52f60c2c6c7c677d99a11e7a699b0b66d7",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "The Painted Veil",
+    "authorsName" : "Deandre",
+    "authorsSurname" : "Wilkinson",
+    "genre" : "Comic/Graphic Novel"
+  }, {
+    "id" : 0,
+    "title" : "The Moon by Night",
+    "authorsName" : "Inocencia",
+    "authorsSurname" : "Zboncak",
+    "genre" : "Comic/Graphic Novel"
+  }, {
+    "id" : 0,
+    "title" : "Stranger in a Strange Land",
+    "authorsName" : "Izola",
+    "authorsSurname" : "Herzog",
+    "genre" : "Science fiction"
+  }, {
+    "id" : 0,
+    "title" : "The Moving Finger",
+    "authorsName" : "Yen",
+    "authorsSurname" : "Bradtke",
+    "genre" : "Folklore"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Layne",
+  "surname" : "Hagenes",
+  "email" : "layne.hagenes@codeacademy.lt",
+  "password" : "7d8d47407d2b4ab30b354e542f17210274f433a53e2fa3d87a161da32dfa434f",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "Endless Night",
+    "authorsName" : "Elza",
+    "authorsSurname" : "Mayert",
+    "genre" : "Essay"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Dakota",
+  "surname" : "Haley",
+  "email" : "dakota.haley@codeacademy.lt",
+  "password" : "07e24d8e6fda5f507409306a91b7bb8044d1ef1d2d887468476af5ed3c80ab2a",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "To a God Unknown",
+    "authorsName" : "Andreas",
+    "authorsSurname" : "Paucek",
+    "genre" : "Tall tale"
+  }, {
+    "id" : 0,
+    "title" : "By Grand Central Station I Sat Down and Wept",
+    "authorsName" : "Merna",
+    "authorsSurname" : "Zulauf",
+    "genre" : "Fiction in verse"
+  }, {
+    "id" : 0,
+    "title" : "No Longer at Ease",
+    "authorsName" : "Vito",
+    "authorsSurname" : "McLaughlin",
+    "genre" : "Short story"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Isiah",
+  "surname" : "Kohler",
+  "email" : "isiah.kohler@codeacademy.lt",
+  "password" : "ca04b27e485b5c4a77715608a9b198dae37ed901b5adcab436b990b0fb6c6ba1",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "The Millstone",
+    "authorsName" : "Dominque",
+    "authorsSurname" : "Nienow",
+    "genre" : "Science fiction"
+  }, {
+    "id" : 0,
+    "title" : "A Darkling Plain",
+    "authorsName" : "Lorinda",
+    "authorsSurname" : "Koepp",
+    "genre" : "Reference book"
+  }, {
+    "id" : 0,
+    "title" : "It's a Battlefield",
+    "authorsName" : "Arnoldo",
+    "authorsSurname" : "Kuhn",
+    "genre" : "Fanfiction"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Rosina",
+  "surname" : "Schinner",
+  "email" : "rosina.schinner@codeacademy.lt",
+  "password" : "8405cbdac4943ed11567652eff3f300fd27e8db69110f3184a56fe9776330662",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "Oh! To be in England",
+    "authorsName" : "Marcellus",
+    "authorsSurname" : "Spinka",
+    "genre" : "Fairy tale"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Arturo",
+  "surname" : "Ryan",
+  "email" : "arturo.ryan@codeacademy.lt",
+  "password" : "004fab3ed4647b8e8eb3a75cf690ef23ba5a4d895b0b8190762d055f68435e77",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "Blue Remembered Earth",
+    "authorsName" : "Tommye",
+    "authorsSurname" : "Boyle",
+    "genre" : "Horror"
+  }, {
+    "id" : 0,
+    "title" : "That Hideous Strength",
+    "authorsName" : "Jesus",
+    "authorsSurname" : "O'Connell",
+    "genre" : "Fanfiction"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Rosina",
+  "surname" : "Swift",
+  "email" : "rosina.swift@codeacademy.lt",
+  "password" : "2ecf37476ae2942a26b2e02cca2cf19a110dd12f76060e384e0713134534a709",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "A Handful of Dust",
+    "authorsName" : "Hal",
+    "authorsSurname" : "Considine",
+    "genre" : "Textbook"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Kassandra",
+  "surname" : "Gerhold",
+  "email" : "kassandra.gerhold@codeacademy.lt",
+  "password" : "90df9174cd09b002a94c161170afad30487829ad3f0fcd2b52840e7728736387",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "A Catskill Eagle",
+    "authorsName" : "Jacquelyn",
+    "authorsSurname" : "Luettgen",
+    "genre" : "Reference book"
+  }, {
+    "id" : 0,
+    "title" : "The Last Enemy",
+    "authorsName" : "Latoyia",
+    "authorsSurname" : "Grady",
+    "genre" : "Science fiction"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Rob",
+  "surname" : "Hyatt",
+  "email" : "rob.hyatt@codeacademy.lt",
+  "password" : "1822f1fb554442b16f03a6a4376717d99aefe8e884d3f0dda6a3cfccbf533783",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "Tender Is the Night",
+    "authorsName" : "Micheal",
+    "authorsSurname" : "Gibson",
+    "genre" : "Realistic fiction"
+  }, {
+    "id" : 0,
+    "title" : "Sleep the Brave",
+    "authorsName" : "Chas",
+    "authorsSurname" : "Dach",
+    "genre" : "Classic"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Isa",
+  "surname" : "Muller",
+  "email" : "isa.muller@codeacademy.lt",
+  "password" : "Cooler",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "The Cricket on the Hearth",
+    "authorsName" : "Vicente",
+    "authorsSurname" : "Tromp",
+    "genre" : "Fantasy"
+  }, {
+    "id" : 0,
+    "title" : "Postern of Fate",
+    "authorsName" : "Markus",
+    "authorsSurname" : "Walter",
+    "genre" : "Western"
+  }, {
+    "id" : 0,
+    "title" : "The Last Enemy",
+    "authorsName" : "Stacey",
+    "authorsSurname" : "Mraz",
+    "genre" : "Fiction narrative"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Jarod",
+  "surname" : "Jast",
+  "email" : "jarod.jast@codeacademy.lt",
+  "password" : "Vegito",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "The Way of All Flesh",
+    "authorsName" : "Boyd",
+    "authorsSurname" : "Gutkowski",
+    "genre" : "Tall tale"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Warren",
+  "surname" : "Sporer",
+  "email" : "warren.sporer@codeacademy.lt",
+  "password" : "Videl",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "East of Eden",
+    "authorsName" : "Kate",
+    "authorsSurname" : "Doyle",
+    "genre" : "Mystery"
+  }, {
+    "id" : 0,
+    "title" : "The Heart Is Deceitful Above All Things",
+    "authorsName" : "Magen",
+    "authorsSurname" : "Stracke",
+    "genre" : "Metafiction"
+  }, {
+    "id" : 0,
+    "title" : "Of Human Bondage",
+    "authorsName" : "Tayna",
+    "authorsSurname" : "Hane",
+    "genre" : "Fantasy"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Vance",
+  "surname" : "Reinger",
+  "email" : "vance.reinger@codeacademy.lt",
+  "password" : "Yamcha",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "Fame Is the Spur",
+    "authorsName" : "Lissa",
+    "authorsSurname" : "Bernhard",
+    "genre" : "Mythology"
+  }, {
+    "id" : 0,
+    "title" : "Recalled to Life",
+    "authorsName" : "Phil",
+    "authorsSurname" : "Pollich",
+    "genre" : "Reference book"
+  } ]
+}, {
+  "id" : 0,
+  "name" : "Aaron",
+  "surname" : "Kiehn",
+  "email" : "aaron.kiehn@codeacademy.lt",
+  "password" : "Majin Buu",
+  "borrowedBooks" : [ {
+    "id" : 0,
+    "title" : "Far From the Madding Crowd",
+    "authorsName" : "Roberto",
+    "authorsSurname" : "Lebsack",
+    "genre" : "Essay"
+  }, {
+    "id" : 0,
+    "title" : "The Man Within",
+    "authorsName" : "Kyle",
+    "authorsSurname" : "Runolfsdottir",
+    "genre" : "Historical fiction"
+  } ]
 } ]
