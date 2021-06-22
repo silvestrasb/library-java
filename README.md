@@ -18,7 +18,7 @@ Bibliotekos suteikiamos paslaugos skaitytojams:
   * Pavadinimą
   * Id
 
-* Knygų gtrąžinimas
+* Knygų grąžinimas
 
 * Registracija
 
