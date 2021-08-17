@@ -1,6 +1,6 @@
+/*
 package library.service;
 
-import library.HibernateConfig;
 import library.entity.Book;
 import library.entity.ReaderUser;
 import library.exception.BookNotFoundException;
@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 import java.util.List;
 
 public class BorrowService {
-    private BookService bookService = new BookService();
+    private BookService bookService = new BookService(bookRepository);
 
     public void borrowBook(Book book, ReaderUser user) {
 
@@ -52,7 +52,7 @@ public class BorrowService {
 
         book.setUserId(null);
 
-        new BookService().save(book);
+        new BookService(bookRepository).save(book);
 
 
 //        Session session = HibernateConfig.openSession();
@@ -74,3 +74,4 @@ public class BorrowService {
     }
 
 }
+*/

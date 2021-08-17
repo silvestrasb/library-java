@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class CreateBookRequest {
+public class UpdateBookRequest {
     @NotBlank
     private String title;
 

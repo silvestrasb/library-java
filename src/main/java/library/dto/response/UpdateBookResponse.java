@@ -4,7 +4,7 @@ import library.entity.Book;
 import lombok.Data;
 
 @Data
-public class CreateBookResponse {
+public class UpdateBookResponse {
     private Long id;
 
     private String title;
@@ -13,7 +13,7 @@ public class CreateBookResponse {
 
     private String genre;
 
-    public CreateBookResponse(Book book) {
+    public UpdateBookResponse(Book book) {
         this.id = book.getId();
         this.title = book.getTitle();
         this.author = book.getAuthor();

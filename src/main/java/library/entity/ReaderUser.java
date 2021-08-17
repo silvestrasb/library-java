@@ -1,18 +1,14 @@
+/*
 package library.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@ToString(exclude = "borrowedBooks")
 
 @Entity
 @Table(name = "reader_user")
@@ -57,3 +53,4 @@ public class ReaderUser {
         borrowedBooks.remove(book);
     }
 }
+*/

@@ -1,5 +1,19 @@
-DROP TABLE IF EXISTS reader_user;
-DROP TABLE IF EXISTS book;
+DROP TABLE IF EXISTS book CASCADE;
+CREATE TABLE book
+(
+    id     BIGSERIAL PRIMARY KEY NOT NULL,
+    title  VARCHAR(255)          NOT NULL,
+    author VARCHAR(255)          NOT NULL,
+    genre  VARCHAR(255)          NOT NULL
+);
+
+INSERT INTO book (title, author, genre)
+VALUES ('Anykščių Šilelis', 'Antanas Baranauskas', 'poem'),
+       ('Metai', 'Kristijonas Donelaitis', 'poem'),
+       ('Altorių šešėly', 'Vincas Mykolaitis-Putinas', 'psichological novel');
+
+
+/*DROP TABLE IF EXISTS reader_user;
 
 -- reader user
 CREATE TABLE reader_user
@@ -45,3 +59,4 @@ VALUES ('Saulius',
 INSERT INTO book (title, author_name, author_surname, genre, user_id)
 VALUES ("Horror of sleeping", 'Thomas', 'Sigolas', "horror", null);
 
+*/

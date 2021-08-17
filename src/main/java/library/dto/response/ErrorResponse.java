@@ -1,4 +1,4 @@
-package com.example.springrest.dtos.responses;
+package library.dto.response;
 
 import lombok.Data;
 
