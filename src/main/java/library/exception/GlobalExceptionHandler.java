@@ -1,0 +1,93 @@
+package com.example.springrest.exceptions;
+
+import com.example.springrest.dtos.responses.ErrorResponse;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@Slf4j
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handle(ResourceNotFoundException e) {
+        log.warn("Resource not found: id = {}", e.getId());
+
+        String message = String.format("Resource with id = %d was not found", e.getId());
+        ErrorResponse errorResponse = new ErrorResponse(message, 404);
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handle(UserNotFoundException e) {
+        log.warn("User not found: username {}", e.getUsername());
+
+        String message = String.format("User with username = %s was not found", e.getUsername());
+        ErrorResponse errorResponse = new ErrorResponse(message, 404);
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handle(UserAlreadyExistsException e) {
+        log.warn("User already exists: username {}", e.getUsername());
+
+        String message = String.format("User with username = %s already exists", e.getUsername());
+        ErrorResponse errorResponse = new ErrorResponse(message, 400);
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse> handle(MethodArgumentNotValidException e) {
+        log.warn("Validation failed: message = {}", e.getMessage());
+
+        String message = "Invalid request body provided";
+        ErrorResponse errorResponse = new ErrorResponse(message, 400);
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(FileException.class)
+    public ResponseEntity<ErrorResponse> handle(FileException e) {
+        log.warn("File error occurred: message = {}", e.getMessage());
+
+        ErrorResponse errorResponse = new ErrorResponse(e.getMessage(), 400);
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(FileNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handle(FileNotFoundException e) {
+        log.warn("File not found: filename = {}", e.getFilename());
+
+        ErrorResponse errorResponse = new ErrorResponse(String.format("File not found: filename = %s", e.getFilename()), 404);
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ErrorResponse> handle(AccessDeniedException e) {
+        log.warn("Access is denied: message = {}", e.getMessage());
+
+        ErrorResponse errorResponse = new ErrorResponse("Access is denied", 403);
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handle(Exception e) {
+        log.error("Unexpected error occurred: message = {}", e.getMessage());
+        e.printStackTrace();
+
+        String message = "Server error";
+        ErrorResponse errorResponse = new ErrorResponse(message, 500);
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
