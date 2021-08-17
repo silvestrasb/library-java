@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(BookNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handle(BookNotFoundException e) {
-        log.warn("Book not found: id = {}", e.getBookId());
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handle(ResourceNotFoundException e) {
+        log.warn("Resource not found: id = {}", e.getId());
 
-        String message = String.format("Book with id = %d was not found", e.getBookId());
-        ErrorResponse errorResponse = new ErrorResponse(message, 404);
+        String message = String.format("Resource with id = %d was not found", e.getId());
+        ErrorResponse errorResponse = new ErrorResponse(message, HttpStatus.NOT_FOUND.value());
 
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
+
 }
