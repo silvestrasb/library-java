@@ -1,5 +1,6 @@
 package library.entity;
 
+import library.dto.request.RegisterRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,4 +30,11 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    public User(RegisterRequest registerRequest){
+        this.name = registerRequest.getName();
+        this.surname = registerRequest.getSurname();
+        this.email = registerRequest.getEmail();
+        this.password = registerRequest.getPassword();
+    }
 }
