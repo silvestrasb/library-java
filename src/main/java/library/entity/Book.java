@@ -2,7 +2,6 @@ package library.entity;
 
 import library.dto.request.CreateBookRequest;
 import library.dto.request.UpdateBookRequest;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
