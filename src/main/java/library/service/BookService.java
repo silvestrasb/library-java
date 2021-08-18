@@ -1,12 +1,12 @@
 package library.service;
 
 import library.entity.Book;
-import library.exception.BookNotFoundException;
 import library.exception.ResourceNotFoundException;
 import library.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService {
@@ -17,8 +17,8 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public List<Book> findAll() {
-        return bookRepository.findAll();
+    public List<Book> findAllAvailable() {
+        return bookRepository.findAll().stream().filter((b) -> b.getUser() == null).collect(Collectors.toList());
     }
 
     public List<Book> findAllByFields(String title, String author, String genre) {

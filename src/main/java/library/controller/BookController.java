@@ -1,5 +1,6 @@
 package library.controller;
 
+import library.dto.BookDTO;
 import library.dto.request.CreateBookRequest;
 import library.dto.request.UpdateBookRequest;
 import library.dto.response.CreateBookResponse;
@@ -9,6 +10,7 @@ import library.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/books")
@@ -20,22 +22,22 @@ public class BookController {
     }
 
     @GetMapping
-    public List<Book> getBooks() {
-        return bookService.findAll();
+    public List<BookDTO> getBooks() {
+        return bookService.findAllAvailable().stream().map(BookDTO::new).collect(Collectors.toList());
     }
 
     @GetMapping("{id}")
-    public Book getBook(@PathVariable("id") Long bookId) {
-        return bookService.getById(bookId);
+    public BookDTO getBook(@PathVariable("id") Long bookId) {
+        return new BookDTO(bookService.getById(bookId));
     }
 
     @GetMapping("/search")
-    public List<Book> searchByFields(
+    public List<BookDTO> searchByFields(
             @RequestParam(required = false, value = "title", defaultValue = "") String title,
             @RequestParam(required = false, value = "author", defaultValue = "") String author,
             @RequestParam(required = false, value = "genre", defaultValue = "") String genre
     ) {
-        return bookService.findAllByFields(title, author, genre);
+        return bookService.findAllByFields(title, author, genre).stream().map(BookDTO::new).collect(Collectors.toList());
     }
 
 
@@ -49,12 +51,10 @@ public class BookController {
         return new CreateBookResponse(bookService.save(new Book(createBookRequest)));
     }
 
-    // TODO: FIND THE APPROPRIATE BOOK FROM DB
     @PutMapping("{id}")
     public UpdateBookResponse updateBook(@PathVariable("id") Long bookId, @RequestBody UpdateBookRequest updateBookRequest) {
         return new UpdateBookResponse(bookService.save(new Book(bookId, updateBookRequest)));
     }
-
 
 }
 
