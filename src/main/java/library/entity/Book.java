@@ -35,7 +35,9 @@ public class Book {
         this.author = createBookRequest.getAuthor();
         this.genre = createBookRequest.getGenre();
     }
-    public Book(UpdateBookRequest updateBookRequest) {
+
+    public Book(Long id, UpdateBookRequest updateBookRequest){
+        this.id = id;
         this.title = updateBookRequest.getTitle();
         this.author = updateBookRequest.getAuthor();
         this.genre = updateBookRequest.getGenre();

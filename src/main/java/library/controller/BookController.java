@@ -38,6 +38,7 @@ public class BookController {
         return bookService.findAllByFields(title, author, genre);
     }
 
+
     @DeleteMapping("{id}")
     public void deleteBook(@PathVariable("id") Long bookId) {
         bookService.deleteById(bookId);
@@ -48,9 +49,10 @@ public class BookController {
         return new CreateBookResponse(bookService.save(new Book(createBookRequest)));
     }
 
+    // TODO: FIND THE APPROPRIATE BOOK FROM DB
     @PutMapping("{id}")
     public UpdateBookResponse updateBook(@PathVariable("id") Long bookId, @RequestBody UpdateBookRequest updateBookRequest) {
-        return new UpdateBookResponse(bookService.save(new Book(updateBookRequest)));
+        return new UpdateBookResponse(bookService.save(new Book(bookId, updateBookRequest)));
     }
 
 
