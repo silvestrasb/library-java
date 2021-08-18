@@ -1,77 +1,27 @@
-/*
 package library.service;
 
 import library.entity.Book;
-import library.entity.ReaderUser;
-import library.exception.BookNotFoundException;
-import library.exception.ReaderUserNotFoundException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BorrowService {
-    private BookService bookService = new BookService(bookRepository);
+    private final BookService bookService;
+    private final UserService userService;
 
-    public void borrowBook(Book book, ReaderUser user) {
-
-        Session session = HibernateConfig.openSession();
-        Transaction transaction = session.beginTransaction();
-        try {
-            book.setUserId(user);
-            session.saveOrUpdate(book);
-
-            transaction.commit();
-
-        } catch (Exception e) {
-            transaction.rollback();
-        } finally {
-            session.close();
-        }
+    public BorrowService(BookService bookService, UserService userService) {
+        this.bookService = bookService;
+        this.userService = userService;
     }
 
-    public List<Book> listReaderUserBooks(int id) throws ReaderUserNotFoundException {
-        Session session = HibernateConfig.openSession();
-        List<Book> bookList = null;
-        Transaction transaction = session.beginTransaction();
-        ReaderUser readerUser1 = new ReaderUserService().getById(id);
-        try {
-
-            bookList = readerUser1.getBorrowedBooks();
-            transaction.commit();
-
-        } catch (Exception e) {
-            transaction.rollback();
-        } finally {
-            session.close();
-        }
-        return bookList;
+    public void borrow(Long userId, Long bookId) {
+        Book book = bookService.getById(bookId);
+        book.setUser(userService.getUser(userId));
+        bookService.save(book);
     }
 
-    public void returnBook(Book book) throws BookNotFoundException {
-
-        book.setUserId(null);
-
-        new BookService(bookRepository).save(book);
-
-
-//        Session session = HibernateConfig.openSession();
-//        Transaction transaction = session.beginTransaction();
-//        try {
-//            session.beginTransaction();
-//
-//            book.setUserId(null);
-//
-//            session.saveOrUpdate(book);
-//
-//            session.getTransaction().commit();
-//
-//        } catch (Exception e) {
-//            transaction.rollback();
-//        } finally {
-//            session.close();
-//        }
+    public List<Book> getBorrowedBooks(Long userId) {
+        return userService.getUser(userId).getBorrowedBooks();
     }
-
 }
-*/

@@ -6,11 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
+
+@Entity
 @Table(name = "\"user\"")
 public class User {
 
@@ -31,7 +33,10 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    public User(RegisterRequest registerRequest){
+    @OneToMany(mappedBy = "user")
+    private List<Book> borrowedBooks;
+
+    public User(RegisterRequest registerRequest) {
         this.name = registerRequest.getName();
         this.surname = registerRequest.getSurname();
         this.email = registerRequest.getEmail();

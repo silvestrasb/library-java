@@ -1,11 +1,10 @@
 package library.controller;
 
+import library.dto.BookDTO;
 import library.dto.UserDTO;
+import library.service.BorrowService;
 import library.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,9 +14,11 @@ import java.util.stream.Collectors;
 public class UserController {
 
     private final UserService userService;
+    private final BorrowService borrowService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, BorrowService borrowService) {
         this.userService = userService;
+        this.borrowService = borrowService;
     }
 
     @GetMapping
@@ -28,6 +29,16 @@ public class UserController {
     @GetMapping("{id}")
     public UserDTO getUser(@PathVariable("id") Long userId) {
         return new UserDTO(userService.getUser(userId));
+    }
+
+    @PatchMapping("/{userId}/books")
+    public void borrowBook(@PathVariable("userId") Long userId, @RequestParam(value = "bookId") Long bookId) {
+        borrowService.borrow(userId, bookId);
+    }
+
+    @GetMapping("/{userId}/books")
+    public List<BookDTO> getBorrowedBooks(@PathVariable("userId") Long userId) {
+        return borrowService.getBorrowedBooks(userId).stream().map(BookDTO::new).collect(Collectors.toList());
     }
 
 }

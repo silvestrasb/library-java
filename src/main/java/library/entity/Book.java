@@ -30,13 +30,17 @@ public class Book {
     @Column(name = "genre")
     private String genre;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Book(CreateBookRequest createBookRequest) {
         this.title = createBookRequest.getTitle();
         this.author = createBookRequest.getAuthor();
         this.genre = createBookRequest.getGenre();
     }
 
-    public Book(Long id, UpdateBookRequest updateBookRequest){
+    public Book(Long id, UpdateBookRequest updateBookRequest) {
         this.id = id;
         this.title = updateBookRequest.getTitle();
         this.author = updateBookRequest.getAuthor();
