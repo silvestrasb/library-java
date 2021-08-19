@@ -19,11 +19,18 @@ public class HomeController {
         this.userService = userService;
     }
 
+    @GetMapping
+    public String home() {
+        return "OK";
+    }
+
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public UserDTO register(@Valid @RequestBody RegisterRequest registerRequest) {
         return new UserDTO(userService.createUser(new User(registerRequest)));
     }
+
+
 
     @PostMapping("/login")
     public LoginResponse login(User user) {
