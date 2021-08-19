@@ -16,11 +16,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getUsers() {
+    public List<User> findUsers() {
         return userRepository.findAll();
     }
 
-    public User getUser(Long userId) {
+    public User findUser(Long userId) {
         return userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException(userId));
     }
 

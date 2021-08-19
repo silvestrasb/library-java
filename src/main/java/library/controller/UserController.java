@@ -4,6 +4,7 @@ import library.dto.BookDTO;
 import library.dto.UserDTO;
 import library.service.BorrowService;
 import library.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,15 +24,16 @@ public class UserController {
 
     @GetMapping
     public List<UserDTO> getUsers() {
-        return userService.getUsers().stream().map(UserDTO::new).collect(Collectors.toList());
+        return userService.findUsers().stream().map(UserDTO::new).collect(Collectors.toList());
     }
 
     @GetMapping("{id}")
     public UserDTO getUser(@PathVariable("id") Long userId) {
-        return new UserDTO(userService.getUser(userId));
+        return new UserDTO(userService.findUser(userId));
     }
 
     @PatchMapping("/{userId}/books")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void borrowBook(@PathVariable("userId") Long userId, @RequestParam(value = "bookId") Long bookId) {
         borrowService.borrow(userId, bookId);
     }
@@ -40,5 +42,4 @@ public class UserController {
     public List<BookDTO> getBorrowedBooks(@PathVariable("userId") Long userId) {
         return borrowService.getBorrowedBooks(userId).stream().map(BookDTO::new).collect(Collectors.toList());
     }
-
 }

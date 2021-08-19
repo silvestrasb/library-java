@@ -17,19 +17,33 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
+    public List<Book> findAllBooks() {
+        return bookRepository.findAll();
+    }
+
     public List<Book> findAllAvailable() {
-        return bookRepository.findAll().stream().filter((b) -> b.getUser() == null).collect(Collectors.toList());
+        return this.findAllBooks().stream().filter((b) -> b.getUser() == null).collect(Collectors.toList());
     }
 
     public List<Book> findAllByFields(String title, String author, String genre) {
         return bookRepository.findByFields(title, author, genre);
     }
 
+    public List<Book> findAllByFieldsAvailable(String title, String author, String genre) {
+        return this.findAllByFields(title, author, genre).stream().filter((b) -> b.getUser() == null).collect(Collectors.toList());
+    }
+
     public Book save(Book book) {
         return bookRepository.save(book);
     }
 
-    public Book getById(Long id) {
+    public Book update(Book book){
+        Book bookDB = this.findById(book.getId());
+        book.setUser(bookDB.getUser());
+        return this.save(this.findById(book.getId()) != null ? book : null);
+    }
+
+    public Book findById(Long id) {
         return bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
     }
 

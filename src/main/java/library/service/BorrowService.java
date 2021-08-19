@@ -16,12 +16,12 @@ public class BorrowService {
     }
 
     public void borrow(Long userId, Long bookId) {
-        Book book = bookService.getById(bookId);
-        book.setUser(userService.getUser(userId));
+        Book book = bookService.findById(bookId);
+        book.setUser(userService.findUser(userId));
         bookService.save(book);
     }
 
     public List<Book> getBorrowedBooks(Long userId) {
-        return userService.getUser(userId).getBorrowedBooks();
+        return userService.findUser(userId).getBorrowedBooks();
     }
 }
