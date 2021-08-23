@@ -1,9 +1,9 @@
-package com.example.springrest.configs;
+package library.config;
 
-import com.example.springrest.filters.JwtAuthenticationFilter;
-import com.example.springrest.filters.JwtAuthorizationFilter;
-import com.example.springrest.services.JwtService;
-import com.example.springrest.services.UserService;
+import library.filters.JwtAuthenticationFilter;
+import library.filters.JwtAuthorizationFilter;
+import library.service.JwtService;
+import library.service.UserService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

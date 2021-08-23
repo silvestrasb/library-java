@@ -1,11 +1,15 @@
 package library.entity;
 
+import library.dto.UserDTO;
 import library.dto.request.RegisterRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Getter
@@ -14,7 +18,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "\"user\"")
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,5 +45,42 @@ public class User {
         this.surname = registerRequest.getSurname();
         this.email = registerRequest.getEmail();
         this.password = registerRequest.getPassword();
+    }
+
+    public User(UserDTO userDTO){
+        this.id = userDTO.getId();;
+        this.name = userDTO.getName();
+        this.surname = userDTO.getSurname();
+        this.email = userDTO.getEmail();
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
