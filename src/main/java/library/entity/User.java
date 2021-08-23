@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -40,6 +41,13 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<Book> borrowedBooks;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+    )
+    private Set<Role> roles;
+
     public User(RegisterRequest registerRequest) {
         this.name = registerRequest.getName();
         this.surname = registerRequest.getSurname();
@@ -48,7 +56,7 @@ public class User implements UserDetails {
     }
 
     public User(UserDTO userDTO){
-        this.id = userDTO.getId();;
+        this.id = userDTO.getId();
         this.name = userDTO.getName();
         this.surname = userDTO.getSurname();
         this.email = userDTO.getEmail();
@@ -56,7 +64,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return this.roles;
     }
 
     @Override
@@ -82,5 +90,14 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public boolean isAdmin() {
+        for (Role role : roles) {
+            if (role.getName().equals("ADMIN")) {
+                return true;
+            }
+        }
+        return false;
     }
 }

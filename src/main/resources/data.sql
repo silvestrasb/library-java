@@ -15,7 +15,6 @@ VALUES ('Anykščių Šilelis', 'Antanas Baranauskas', 'poem', null),
 
 
 DROP TABLE IF EXISTS "user" CASCADE;
-
 CREATE TABLE "user"
 (
     id       BIGSERIAL PRIMARY KEY  NOT NULL,
@@ -29,3 +28,27 @@ INSERT INTO "user" (name, surname, email, password)
 VALUES ('ohn', 'Doe', 'john.doe@mail.com', 'johny123'),
      ('Mary', 'Frank', 'marry.frank@mail.com', 'mary123'),
      ('Vanessa', 'Bank', 'vanessa.bank@mail.com', 'vanessa123')
+
+
+DROP TABLE IF EXISTS role CASCADE;
+CREATE TABLE role
+(
+    id   BIGSERIAL PRIMARY KEY NOT NULL,
+    name VARCHAR(255) UNIQUE   NOT NULL
+);
+
+DROP TABLE IF EXISTS user_role;
+CREATE TABLE user_role
+(
+    user_id BIGINT NOT NULL REFERENCES "user" (id),
+    role_id BIGINT NOT NULL REFERENCES role (id)
+);
+
+INSERT INTO role (name)
+VALUES ('USER'),
+       ('ADMIN');
+
+INSERT INTO user_role (user_id, role_id)
+VALUES (1, 1),
+       (1, 2),
+       (2, 1);

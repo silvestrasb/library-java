@@ -2,6 +2,7 @@ package library.service;
 
 import library.entity.User;
 import library.exception.ResourceNotFoundException;
+import library.repository.RoleRepository;
 import library.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -32,6 +33,14 @@ public class UserService implements UserDetailsService {
     }
 
     public User createUser(User user) {
+        if (userRepository.findUserByEmail(user.getEmail()).isPresent()) {
+            return null;
+//            throw new UserAlreadyExistsException(user.getUsername());
+        }
+        return userRepository.save(user);
+    }
+
+    public User updateUser(User user){
         return userRepository.save(user);
     }
 

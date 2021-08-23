@@ -12,6 +12,7 @@ import library.dto.response.UpdateBookResponse;
 import library.entity.Book;
 import library.service.BookService;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class BookController {
             @ApiResponse(code = 401, message = "Unauthorized")
     })
     @GetMapping("{id}")
-    // TODO: ONLY FOR ADMIN OR USER WHO BORROWED THAT BOOK
+    @PreAuthorize("hasRole('ADMIN') || principal.id == #id")
     public BookDTO getBook(@PathVariable("id") Long bookId) {
         return new BookDTO(bookService.findById(bookId));
     }
@@ -78,7 +79,7 @@ public class BookController {
     })
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    // TODO: ONLY F0R ADMIN
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteBook(@PathVariable("id") Long bookId) {
         bookService.deleteById(bookId);
     }
@@ -91,7 +92,7 @@ public class BookController {
     })
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    // TODO: ONLY F0R ADMIN
+    @PreAuthorize("hasRole('ADMIN')")
     public CreateBookResponse saveBook(@RequestBody CreateBookRequest createBookRequest) {
         return new CreateBookResponse(bookService.save(new Book(createBookRequest)));
     }
@@ -103,9 +104,11 @@ public class BookController {
             @ApiResponse(code = 401, message = "Unauthorized")
     })
     @PutMapping("{id}")
-    // TODO: ONLY F0R ADMIN
+    @PreAuthorize("hasRole('ADMIN')")
     public UpdateBookResponse updateBook(@PathVariable("id") Long bookId, @RequestBody UpdateBookRequest updateBookRequest) {
         return new UpdateBookResponse(bookService.update(new Book(bookId, updateBookRequest)));
     }
+
+
 }
 
