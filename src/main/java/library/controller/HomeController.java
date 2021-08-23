@@ -42,12 +42,24 @@ public class HomeController {
         return new ResponseEntity<>(status, HttpStatus.valueOf(status));
     }
 
+    @ApiOperation(value = "Register", tags = "register", httpMethod = "POST")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully registered."),
+            @ApiResponse(code = 400, message = "Validation failed"),
+            @ApiResponse(code = 401, message = "Unauthorized")
+    })
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public UserDTO register(@Valid @RequestBody RegisterRequest registerRequest) {
         return new UserDTO(userService.createUser(new User(registerRequest)));
     }
 
+    @ApiOperation(value = "Login", tags = "login", httpMethod = "POST")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successful login."),
+            @ApiResponse(code = 400, message = "Validation failed"),
+            @ApiResponse(code = 401, message = "Unauthorized")
+    })
     @PostMapping("/login")
     public LoginResponse login(@AuthenticationPrincipal User user) {
         return new LoginResponse(jwtService.createToken(user), new UserDTO(user));

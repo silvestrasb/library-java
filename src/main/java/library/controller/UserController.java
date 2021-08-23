@@ -1,5 +1,8 @@
 package library.controller;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import library.dto.BookDTO;
 import library.dto.UserDTO;
 import library.entity.Book;
@@ -28,30 +31,60 @@ public class UserController {
         this.bookService = bookService;
     }
 
+    @ApiOperation(value = "Get all users", tags = "getUsers", httpMethod = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully returned all users."),
+            @ApiResponse(code = 400, message = "Validation failed"),
+            @ApiResponse(code = 401, message = "Unauthorized")
+    })
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
     public List<UserDTO> getUsers() {
         return userService.findUsers().stream().map(UserDTO::new).collect(Collectors.toList());
     }
 
+    @ApiOperation(value = "Get user by id", tags = "getUser", httpMethod = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully returned user."),
+            @ApiResponse(code = 400, message = "Validation failed"),
+            @ApiResponse(code = 401, message = "Unauthorized")
+    })
     @GetMapping("{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public UserDTO getUser(@PathVariable("id") Long userId) {
         return new UserDTO(userService.findUser(userId));
     }
 
+    @ApiOperation(value = "Borrow book", tags = "borrowBook", httpMethod = "PATCH")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully borrowed book."),
+            @ApiResponse(code = 400, message = "Validation failed"),
+            @ApiResponse(code = 401, message = "Unauthorized")
+    })
     @PatchMapping("/{userId}/books")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void borrowBook(@PathVariable("userId") Long userId, @RequestParam(value = "bookId") Long bookId) {
         borrowService.borrow(userId, bookId);
     }
 
+    @ApiOperation(value = "Get borrowed books", tags = "getBorrowedBooks", httpMethod = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully returned borrowed books."),
+            @ApiResponse(code = 400, message = "Validation failed"),
+            @ApiResponse(code = 401, message = "Unauthorized")
+    })
     @GetMapping("/{userId}/books")
     public List<BookDTO> getBorrowedBooks(@PathVariable("userId") Long userId) {
         return borrowService.getBorrowedBooks(userId).stream().map(BookDTO::new).collect(Collectors.toList());
     }
 
-    @GetMapping("{userId}/return")
+    @ApiOperation(value = "Return book", tags = "returnBook", httpMethod = "PATCH")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully returned a book."),
+            @ApiResponse(code = 400, message = "Validation failed"),
+            @ApiResponse(code = 401, message = "Unauthorized")
+    })
+    @PatchMapping("{userId}/return")
     public Book returnBook(@PathVariable("userId") User user, @RequestParam(value = "bookId") Long bookId) {
         user.getBorrowedBooks().removeIf(book1 -> book1.getId() == bookId);
 
