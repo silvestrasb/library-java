@@ -61,6 +61,6 @@ public class JwtService {
         UserDTO userDTO = objectMapper.readValue(objectMapper.writeValueAsString(parsedJwtBody.get("user")), UserDTO.class);
         User user = new User(userDTO);
 
-        return new UsernamePasswordAuthenticationToken(user, null);
+        return new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
     }
 }

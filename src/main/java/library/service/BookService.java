@@ -1,6 +1,7 @@
 package library.service;
 
 import library.entity.Book;
+import library.exception.BookNotFoundException;
 import library.exception.ResourceNotFoundException;
 import library.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -44,7 +45,7 @@ public class BookService {
     }
 
     public Book findById(Long id) {
-        return bookRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+        return bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
     }
 
     public void deleteById(Long bookId) {
