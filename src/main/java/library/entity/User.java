@@ -60,6 +60,7 @@ public class User implements UserDetails {
         this.name = userDTO.getName();
         this.surname = userDTO.getSurname();
         this.email = userDTO.getEmail();
+        this.roles = userDTO.getRoles();
     }
 
     @Override
