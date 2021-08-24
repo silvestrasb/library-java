@@ -1,4 +1,4 @@
-package com.example.springrest.exceptions;
+package library.exception;
 
 import lombok.Getter;
 
