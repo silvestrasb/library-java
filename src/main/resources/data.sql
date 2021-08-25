@@ -26,7 +26,7 @@ VALUES ('Anykščių Šilelis', 'Antanas Baranauskas', 'poem', null),
 
 INSERT INTO "user" (name, surname, email, password)
 VALUES ('admin', 'admin', 'admin', 'admin'),
-       ('ohn', 'Doe', 'john.doe@mail.com', 'johny123')
+       ('ohn', 'Doe', 'john.doe@mail.com', 'johny123');
 
 
 DROP TABLE IF EXISTS role CASCADE;
@@ -36,7 +36,7 @@ CREATE TABLE role
     name VARCHAR(255) UNIQUE   NOT NULL
 );
 
-DROP TABLE IF EXISTS user_role;
+DROP TABLE IF EXISTS user_role CASCADE;
 CREATE TABLE user_role
 (
     user_id BIGINT NOT NULL REFERENCES "user" (id),
