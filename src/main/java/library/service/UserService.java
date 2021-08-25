@@ -36,6 +36,7 @@ public class UserService implements UserDetailsService {
         if (userRepository.findUserByEmail(user.getEmail()).isPresent()) {
             throw new EmailAlreadyExistsException(user.getEmail());
         }
+        user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 

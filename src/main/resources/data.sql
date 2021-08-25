@@ -26,9 +26,7 @@ VALUES ('Anykščių Šilelis', 'Antanas Baranauskas', 'poem', null),
 
 INSERT INTO "user" (name, surname, email, password)
 VALUES ('admin', 'admin', 'admin', 'admin'),
-       ('ohn', 'Doe', 'john.doe@mail.com', 'johny123'),
-       ('Mary', 'Frank', 'marry.frank@mail.com', 'mary123'),
-       ('Vanessa', 'Bank', 'vanessa.bank@mail.com', 'vanessa123');
+       ('ohn', 'Doe', 'john.doe@mail.com', 'johny123')
 
 
 DROP TABLE IF EXISTS role CASCADE;
