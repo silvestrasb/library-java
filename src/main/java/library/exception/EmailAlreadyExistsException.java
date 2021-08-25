@@ -1,6 +1,9 @@
 package library.exception;
 
-public class EmailAlreadyExistsException extends RuntimeException{
+import lombok.Getter;
+
+@Getter
+public class EmailAlreadyExistsException extends RuntimeException {
     private final String email;
 
     public EmailAlreadyExistsException(String email) {

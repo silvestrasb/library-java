@@ -1,4 +1,4 @@
 package library.exception;
 
-public class InvalidEmailException extends RuntimeException {
+public class InvalidEmailException extends Throwable {
 }
